@@ -16,4 +16,10 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ gitea.workspace }}
+      - name: Copy code to C:\output directory
+        run: | 
+          if [ ! -d "C:/output" ]; then
+            mkdir -p C:/output
+            fi
+            cp -r ${{ gitea.workspace }}/* C:/output/
       - run: echo "🍏 This job's status is ${{ job.status }}."
