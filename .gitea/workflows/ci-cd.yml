@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   Explore-Gitea-Actions:
-    runs-on: default_label
+    runs-on: windows-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ gitea.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Gitea!"
@@ -16,10 +16,13 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ gitea.workspace }}
-      - name: Copy code to C:\output directory
-        run: | 
-          if [ ! -d "C:/output" ]; then
-            mkdir -p C:/output
-            fi
-            cp -r ${{ gitea.workspace }}/* C:/output/
+
+      - name: Copy repository to C:\output
+        run: |
+          if (-not (Test-Path -Path "C:\output")) {
+            New-Item -Path "C:\output" -ItemType Directory
+          }
+          Copy-Item -Path "${{ gitea.workspace }}\*" -Destination "C:\output" -Recurse -Force
+        shell: powershell
+
       - run: echo "🍏 This job's status is ${{ job.status }}."
