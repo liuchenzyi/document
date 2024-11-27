@@ -1,20 +1,19 @@
-
-name: Gitea Actions 示例
-run-name: ${{ gitea.actor }} 正在测试 Gitea Actions 🚀
+name: Gitea Actions Demo
+run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
 on: [push]
 
 jobs:
   Explore-Gitea-Actions:
     runs-on: default_label
     steps:
-      - run: echo "🎉 该任务是由一个 ${{ gitea.event_name }} 事件自动触发的。"
-      - run: echo "🐧 该任务现在正在 Gitea 主机的 ${{ runner.os }} 服务器上运行！"
-      - run: echo "🔎 当前分支名称是 ${{ gitea.ref }}，您的仓库是 ${{ gitea.repository }}。"
-      - name: 检出仓库代码
+      - run: echo "🎉 The job was automatically triggered by a ${{ gitea.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Gitea!"
+      - run: echo "🔎 The name of your branch is ${{ gitea.ref }} and your repository is ${{ gitea.repository }}."
+      - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "💡 ${{ gitea.repository }} 仓库已被克隆到运行器。"
-      - run: echo "🖥️ 工作流现在准备在运行器上测试您的代码。"
-      - name: 列出仓库中的文件
+      - run: echo "💡 The ${{ gitea.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
         run: |
           ls ${{ gitea.workspace }}
-      - run: echo "🍏 该任务的状态是 ${{ job.status }}。"
+      - run: echo "🍏 This job's status is ${{ job.status }}."
