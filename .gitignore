@@ -2,3 +2,4 @@ node_modules
 docs/.vitepress/cache
 .idea
 docs/.vitepress/dist
+docs/dist
