@@ -24,10 +24,10 @@ jobs:
           pnpm docs:build
       - name: Copy repository to C:\output
         run: |
-          if (-not (Test-Path -Path "C:\output")) {
-            New-Item -Path "C:\output" -ItemType Directory
+          if (-not (Test-Path -Path "C:\output\dist")) {
+            New-Item -Path "C:\output\dist" -ItemType Directory
           }
-          Copy-Item -Path "${{ gitea.workspace }}\docs\*" -Destination "C:\output" -Recurse -Force
+          Copy-Item -Path "${{ gitea.workspace }}\docs\dist\*" -Destination "C:\output" -Recurse -Force
         shell: powershell
 
       - run: echo "🍏 This job's status is ${{ job.status }}."

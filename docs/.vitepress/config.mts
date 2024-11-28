@@ -46,7 +46,8 @@ const vitePressOptions = {
 		outline: {
 			label: '页面导航',
 		}
-	}
+	},
+	outDir:"./dist"
 }
 
 
