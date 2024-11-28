@@ -16,7 +16,12 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ gitea.workspace }}
-
+      - name: Install dependencies
+        run: |
+          pnpm install
+      - name: Build with VitePress
+        run: |
+          pnpm docs:build
       - name: Copy repository to C:\output
         run: |
           if (-not (Test-Path -Path "C:\output")) {
