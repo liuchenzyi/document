@@ -1,6 +1,6 @@
-name: Gitea Actions Demo
+name: vite-press-deploy
 run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
-on: [push]
+on: [ push ]
 
 jobs:
   Explore-Gitea-Actions:
@@ -22,11 +22,16 @@ jobs:
       - name: Build with VitePress
         run: |
           pnpm docs:build
-      - name: Copy repository to C:\output
+      - name: Clear output directory
         run: |
-          if (-not (Test-Path -Path "C:\output\dist")) {
+          if (Test-Path -Path "C:\output\dist") {
+            Remove-Item -Path "C:\output\dist\*" -Recurse -Force
+          }else{
             New-Item -Path "C:\output\dist" -ItemType Directory
           }
+        shell: powershell
+      - name: Copy repository to C:\output
+        run: |
           Copy-Item -Path "${{ gitea.workspace }}\docs\dist\*" -Destination "C:\output\dist" -Recurse -Force
         shell: powershell
 
