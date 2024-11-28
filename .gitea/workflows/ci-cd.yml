@@ -27,7 +27,7 @@ jobs:
           if (-not (Test-Path -Path "C:\output")) {
             New-Item -Path "C:\output" -ItemType Directory
           }
-          Copy-Item -Path "${{ gitea.workspace }}\*" -Destination "C:\output" -Recurse -Force
+          Copy-Item -Path "${{ gitea.workspace }}\docs\*" -Destination "C:\output" -Recurse -Force
         shell: powershell
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
