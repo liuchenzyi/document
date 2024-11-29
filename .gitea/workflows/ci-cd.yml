@@ -9,16 +9,16 @@ jobs:
       - run: echo " 此 job 通过 ${{ gitea.event_name }} 事件自动触发"
       - run: echo " 此 job 现在正在Gitea 托管的 ${{ runner.os }} 服务器上运行!"
       - run: echo "🔎 The name of your branch is ${{ gitea.ref }} and your repository is ${{ gitea.repository }}."
-      - name: "拉取代码"
+      - name: 拉取代码
         uses: https://gitee.com/mirror-actions/checkout@v4
       - run: echo "${{ gitea.repository }} 仓库代码已经下载到 runner "
-      - name: "安装依赖"
+      - name: 安装依赖
         run: |
           pnpm install
-      - name: "打包"
+      - name: 打包
         run: |
           pnpm docs:build
-      - name: "清理输出目录"
+      - name: 清理输出目录
         run: |
           if (Test-Path -Path "C:\output\dist") {
             Remove-Item -Path "C:\output\dist\*" -Recurse -Force
@@ -26,7 +26,7 @@ jobs:
             New-Item -Path "C:\output\dist" -ItemType Directory
           }
         shell: powershell
-      - name: Copy repository to C:\output
+      - name: 将打包结果拷贝到指定目录
         run: |
           Copy-Item -Path "${{ gitea.workspace }}\docs\dist\*" -Destination "C:\output\dist" -Recurse -Force
         shell: powershell
