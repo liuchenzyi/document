@@ -4,13 +4,13 @@ on: [ push ]
 
 jobs:
   Explore-Gitea-Actions:
-    runs-on: default_label
+    runs-on: windows-server
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ gitea.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Gitea!"
+      - run: echo "此 job 通过 ${{ gitea.event_name }} 事件自动触发"
+      - run: echo "此 job 现在正在Gitea 托管的 ${{ runner.os }} 服务器上运行!"
       - run: echo "🔎 The name of your branch is ${{ gitea.ref }} and your repository is ${{ gitea.repository }}."
       - name: Check out repository code
-        uses: http://10.126.126.1:3000/liuchen/checkout/actions/checkout@v4
+        uses: https://gitee.com/mirror-actions/checkout@v4
       - run: echo "💡 The ${{ gitea.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
