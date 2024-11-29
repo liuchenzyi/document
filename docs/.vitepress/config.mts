@@ -33,7 +33,7 @@ const vitePressOptions = {
 			{icon: 'github', link: 'https://github.com/vuejs/vitepress'}
 		],
 		editLink: {
-			pattern: 'http://http://10.126.126.1:3000/liuchen/document/_edit/main/docs/:path',
+			pattern: 'http://10.126.126.1:3000/liuchen/document/_edit/main/docs/:path',
 			text: '编辑此页面'
 		},
 		lastUpdated: {
