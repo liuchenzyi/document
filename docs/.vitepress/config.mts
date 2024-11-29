@@ -33,7 +33,7 @@ const vitePressOptions = {
 			{icon: 'github', link: 'https://github.com/vuejs/vitepress'}
 		],
 		editLink: {
-			pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
+			pattern: 'http://http://10.126.126.1:3000/liuchen/document/_edit/main/docs/:path',
 			text: '编辑此页面'
 		},
 		lastUpdated: {
@@ -45,7 +45,12 @@ const vitePressOptions = {
 		},
 		outline: {
 			label: '页面导航',
-		}
+		},
+		// 文章翻页
+		docFooter: {
+			prev: '上一篇',
+			next: '下一篇'
+		},
 	},
 	outDir:"./dist"
 }
@@ -56,7 +61,7 @@ const vitePressSidebarOptions = {
 	documentRootPath: '/docs',
 	collapsed: false,
 	capitalizeFirst: true,
-	debugPrint: true
+	debugPrint: false,
 };
 
 export default defineConfig(withSidebar(vitePressOptions, vitePressSidebarOptions));
