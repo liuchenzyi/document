@@ -26,7 +26,7 @@ jobs:
             New-Item -Path "C:\output\dist" -ItemType Directory
           }
         shell: powershell
-      - name: Copy repository to C:\output
+      - name: "将打包结果拷贝到指定目录"
         run: |
           Copy-Item -Path "${{ gitea.workspace }}\docs\dist\*" -Destination "C:\output\dist" -Recurse -Force
         shell: powershell
