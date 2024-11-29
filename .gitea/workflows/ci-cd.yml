@@ -6,23 +6,19 @@ jobs:
   Explore-Gitea-Actions:
     runs-on: windows-server
     steps:
-      - run: echo "此 job 通过 ${{ gitea.event_name }} 事件自动触发"
-      - run: echo "此 job 现在正在Gitea 托管的 ${{ runner.os }} 服务器上运行!"
+      - run: echo " 此 job 通过 ${{ gitea.event_name }} 事件自动触发"
+      - run: echo " 此 job 现在正在Gitea 托管的 ${{ runner.os }} 服务器上运行!"
       - run: echo "🔎 The name of your branch is ${{ gitea.ref }} and your repository is ${{ gitea.repository }}."
-      - name: Check out repository code
+      - name: "拉取代码"
         uses: https://gitee.com/mirror-actions/checkout@v4
-      - run: echo "💡 The ${{ gitea.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ gitea.workspace }}
-      - name: Install dependencies
+      - run: echo "${{ gitea.repository }} 仓库代码已经下载到 runner "
+      - name: "安装依赖"
         run: |
           pnpm install
-      - name: Build with VitePress
+      - name: "打包"
         run: |
           pnpm docs:build
-      - name: Clear output directory
+      - name: "清理输出目录"
         run: |
           if (Test-Path -Path "C:\output\dist") {
             Remove-Item -Path "C:\output\dist\*" -Recurse -Force
@@ -30,9 +26,7 @@ jobs:
             New-Item -Path "C:\output\dist" -ItemType Directory
           }
         shell: powershell
-      - name: Copy repository to C:\output
+      - name: "将打包结果复制到 C:\output\dist 目录下"
         run: |
           Copy-Item -Path "${{ gitea.workspace }}\docs\dist\*" -Destination "C:\output\dist" -Recurse -Force
         shell: powershell
-
-      - run: echo "🍏 This job's status is ${{ job.status }}."
