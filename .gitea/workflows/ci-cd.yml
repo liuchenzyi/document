@@ -1,5 +1,5 @@
 name: vite-press-deploy
-run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
+run-name: ${{ gitea.actor }} is testing out Gitea Actions
 on: [ push ]
 
 jobs:
