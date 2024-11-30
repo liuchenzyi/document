@@ -9,6 +9,8 @@ jobs:
       - run: echo " 此 job 通过 ${{ gitea.event_name }} 事件自动触发"
       - run: echo " 此 job 现在正在Gitea 托管的 ${{ runner.os }} 服务器上运行!"
       - run: echo "🔎 The name of your branch is ${{ gitea.ref }} and your repository is ${{ gitea.repository }}."
+      - run: echo "测试密钥内容 ${{ secrets.TEST }}"
+      - run: echo "测试变量内容 ${{ vars.NAME }}"
       - name: 拉取代码
         uses: https://gitee.com/mirror-actions/checkout@v4
       - run: echo "${{ gitea.repository }} 仓库代码已经下载到 runner "
