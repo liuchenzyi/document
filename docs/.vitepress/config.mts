@@ -5,7 +5,7 @@ import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 
 // https://vitepress.dev/reference/site-config
 const vitePressOptions = {
-    title: "My Awesome Project",
+    title: "个人知识库",
     description: "A VitePress Site",
     lastUpdated: true, // 是否显示最后更新时间
     themeConfig: {
