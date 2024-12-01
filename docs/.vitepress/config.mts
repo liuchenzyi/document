@@ -1,5 +1,6 @@
 import {defineConfig} from 'vitepress'
 import {withSidebar} from 'vitepress-sidebar';
+import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 
 
 // https://vitepress.dev/reference/site-config
@@ -13,7 +14,30 @@ const vitePressOptions = {
             {text: 'Home', link: '/'},
             {text: 'Examples', link: '/markdown-examples'}
         ],
+		sidebar: [],
 
+		socialLinks: [
+			{icon: 'github', link: 'http://10.126.126.1:3000/liuchen/document'}
+		],
+		editLink: {
+			pattern: 'http://10.126.126.1:3000/liuchen/document/_edit/main/docs/:path',
+			text: '编辑此页面'
+		},
+		lastUpdated: {
+			text: '最后更新时间',
+			formatOptions: {
+				dateStyle: 'full',
+				timeStyle: 'medium'
+			}
+		},
+		outline: {
+			label: '页面导航',
+		},
+		// 文章翻页
+		docFooter: {
+			prev: '上一篇',
+			next: '下一篇'
+		},
         search: {
             provider: 'local',
             options: {
@@ -37,32 +61,23 @@ const vitePressOptions = {
                 }
             }
         },
-
-        sidebar: [],
-
-        socialLinks: [
-            {icon: 'github', link: 'https://github.com/vuejs/vitepress'}
-        ],
-        editLink: {
-            pattern: 'http://10.126.126.1:3000/liuchen/document/_edit/main/docs/:path',
-            text: '编辑此页面'
-        },
-        lastUpdated: {
-            text: '最后更新时间',
-            formatOptions: {
-                dateStyle: 'full',
-                timeStyle: 'medium'
-            }
-        },
-        outline: {
-            label: '页面导航',
-        },
-        // 文章翻页
-        docFooter: {
-            prev: '上一篇',
-            next: '下一篇'
-        },
     },
+	vite:{
+		plugins:[
+			pagefindPlugin({
+				btnPlaceholder: '搜索',
+				placeholder: '搜索文档',
+				emptyText: '空空如也',
+				heading: '共: {{searchResult}} 条结果',
+				customSearchQuery(input) {
+					return input
+						.replace(/[\u4E00-\u9FA5]/g, ' $& ')
+						.replace(/\s+/g, ' ')
+						.trim()
+				},
+			}),
+		]
+	},
     outDir: "./dist"
 }
 
