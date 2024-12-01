@@ -32,11 +32,9 @@
 - 网站加载页
 - 全文搜索
 - 全文图片放大
-- 网站访问量统计
 - GitHub评论系统
 - 自动配置侧边栏
-- 自动打包部署GitHub Pages
-- 自动统计文章字数/阅读时间/最近更新时间
+
 - 未完待续......
 
 ## 1. 安装
@@ -214,7 +212,7 @@ export default defineConfig({
 })
 ```
 
-## 7. 文章侧边栏
+## 5. 文章侧边栏
 
 官方文档：[vitepress 侧边栏](https://vitepress.dev/zh/reference/default-theme-sidebar)
 
@@ -237,7 +235,7 @@ export default {
 }
 ```
 
-### 7.1 使用插件
+### 5.1 使用插件
 
 插件可以自动生成侧边栏并且根据文章名称日期排序
 
@@ -263,28 +261,8 @@ pnpm add -D vitepress-sidebar
 
 
 
-## 8. 访问统计
 
-用的是 [busuanzi](https://busuanzi.ibruce.info/)
-
-- 安装
-  ::: code-group
-
-  ```sh [pnpm]
-  pnpm add -D busuanzi.pure.js
-  ```
-
-  ```sh [npm]
-  npm i -D busuanzi.pure.js
-  ```
-
-  ```sh [yarn]
-  yarn add -D busuanzi.pure.js
-  ```
-
-  :::
-
-## 9. 图片放大
+## 6. 图片放大
 
 vitepress文章中，图片点击没有任何效果，可以使用 [vitepress-plugin-image-viewer](https://github.com/T-miracle/vitepress-plugin-image-viewer)
 这个插件
