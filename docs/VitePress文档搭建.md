@@ -263,7 +263,7 @@ pnpm add -D vitepress-sidebar
 
 
 
-## 12. 访问统计
+## 8. 访问统计
 
 用的是 [busuanzi](https://busuanzi.ibruce.info/)
 
@@ -284,7 +284,7 @@ pnpm add -D vitepress-sidebar
 
   :::
 
-## 14. 图片放大
+## 9. 图片放大
 
 vitepress文章中，图片点击没有任何效果，可以使用 [vitepress-plugin-image-viewer](https://github.com/T-miracle/vitepress-plugin-image-viewer)
 这个插件
