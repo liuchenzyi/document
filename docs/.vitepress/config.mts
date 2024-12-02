@@ -40,6 +40,7 @@ const vitePressOptions = {
 		},
         search: {
             provider: 'local',
+			// 配置中文
             options: {
                 locales: {
                     root: {
