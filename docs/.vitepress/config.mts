@@ -41,9 +41,10 @@ const vitePressOptions = {
 		},
         search: {
             provider: 'local',
+			// 配置中文
             options: {
                 locales: {
-                    zh: {
+                    root: {
                         translations: {
                             button: {
                                 buttonText: '搜索文档',
@@ -55,7 +56,7 @@ const vitePressOptions = {
                                 footer: {
                                     selectText: '选择',
                                     navigateText: '切换',
-									closeText: '关闭',
+									closeText: '关闭'
                                 }
                             }
                         }
