@@ -5,6 +5,7 @@ import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 
 // https://vitepress.dev/reference/site-config
 const vitePressOptions = {
+	lang: 'cn',
     title: "个人知识库",
     description: "A VitePress Site",
     lastUpdated: true, // 是否显示最后更新时间
@@ -80,7 +81,10 @@ const vitePressOptions = {
 			}),
 		]
 	},
-    outDir: "./dist"
+    outDir: "./dist",
+	locales: {
+		root: { label: '简体中文',  },
+	}
 }
 
 
