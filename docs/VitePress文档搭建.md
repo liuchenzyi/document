@@ -6,10 +6,6 @@
 
 ## 前言
 
-服务器过期快一年了，博客也快一年没更新了，最近重新搭建了一下博客，记录一下搭建过程。
-
-以前的博客是使用vuepress搭建的，这次换成了vitepress，vitepress是vuepress的下一代，使用vite构建，性能更好，体验更好
-
 缺点：`vitepress的插件生态还没有vuepress那么丰富，很多功能需要自己实现`
 
 优点：`vitepress可配置项、api都比较多，大部分功能都能实现`
