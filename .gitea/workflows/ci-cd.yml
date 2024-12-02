@@ -23,9 +23,7 @@ jobs:
       - name: 清理输出目录
         run: |
           if (Test-Path -Path "C:\output\dist") {
-#             Remove-Item -Path "C:\output\dist\*" -Recurse -Force
-            Get-ChildItem -Path "C:\output\dist" -Recurse -Force | Where-Object { $_.FullName -notlike "C:\output\dist\easyiter\*" } | Remove-Item -Recurse -Force
-
+            Remove-Item -Path "C:\output\dist\*" -Recurse -Force
           }else{
             New-Item -Path "C:\output\dist" -ItemType Directory
           }
