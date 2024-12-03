@@ -5,10 +5,10 @@ import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 
 // https://vitepress.dev/reference/site-config
 const vitePressOptions = {
-	lang: 'cn',
     title: "个人知识库",
     description: "A VitePress Site",
     lastUpdated: true, // 是否显示最后更新时间
+
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [
@@ -65,14 +65,21 @@ const vitePressOptions = {
             }
         },
     },
+	locales: {
+		root: {
+			lang: 'zh-cn',
+			label: '简体中文',
+		},
+	},
 	vite:{
 		plugins:[
 			pagefindPlugin({
+				forceLanguage: 'zh-cn',
 				btnPlaceholder: '搜索',
 				placeholder: '搜索文档',
 				emptyText: '空空如也',
 				heading: '共: {{searchResult}} 条结果',
-				customSearchQuery(input) {
+				customSearchQuery(input:string) {
 					return input
 						.replace(/[\u4E00-\u9FA5]/g, ' $& ')
 						.replace(/\s+/g, ' ')
@@ -82,9 +89,6 @@ const vitePressOptions = {
 		]
 	},
     outDir: "./dist",
-	locales: {
-		root: { label: '简体中文',  },
-	}
 }
 
 
