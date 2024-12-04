@@ -32,7 +32,13 @@ importers:
       vitepress-plugin-pagefind:
         specifier: ^0.4.11
         version: 0.4.11(pagefind@1.2.0)
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13
     devDependencies:
+      '@css-render/vue3-ssr':
+        specifier: ^0.15.14
+        version: 0.15.14(vue@3.5.13)
       vitepress:
         specifier: ^1.5.0
         version: 1.5.0(@algolia/client-search@5.15.0)(async-validator@4.2.5)(postcss@8.4.49)(search-insights@2.17.3)

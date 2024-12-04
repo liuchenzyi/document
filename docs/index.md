@@ -1,5 +1,4 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
@@ -22,4 +21,3 @@ features:
   - title: 特点三
     details: 这是特点三的描述
 ---
-

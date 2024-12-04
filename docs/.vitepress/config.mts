@@ -3,7 +3,7 @@ import { withSidebar } from 'vitepress-sidebar';
 import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 import {HeaderPlugin} from "./plugins/headerPlugin";
 
-
+const fileAndStyles: Record<string, string> = {}
 // https://vitepress.dev/reference/site-config
 const vitePressOptions = {
 	title: "个人知识库",
@@ -52,6 +52,9 @@ const vitePressOptions = {
 		},
 	},
 	vite: {
+		ssr: {
+			noExternal: ['naive-ui', 'date-fns', 'vueuc'],
+		},
 		plugins: [
 			pagefindPlugin({
 				forceLanguage: 'zh-cn',
@@ -78,6 +81,26 @@ const vitePressOptions = {
             // 是否开启 https
             https: false,
         },
+	},
+	postRender(context) {
+		const styleRegex = /<css-render-style>((.|\s)+)<\/css-render-style>/
+		const vitepressPathRegex = /<vitepress-path>(.+)<\/vitepress-path>/
+		const style = styleRegex.exec(context.content)?.[1]
+		const vitepressPath = vitepressPathRegex.exec(context.content)?.[1]
+		if (vitepressPath && style) {
+			fileAndStyles[vitepressPath] = style
+		}
+		context.content = context.content.replace(styleRegex, '')
+		context.content = context.content.replace(vitepressPathRegex, '')
+	},
+	transformHtml(code, id) {
+		const html = id.split('/').pop()
+		if (!html)
+			return
+		const style = fileAndStyles[`/${html}`]
+		if (style) {
+			return code.replace(/<\/head>/, `${style}</head>`)
+		}
 	},
 	outDir: "./dist",
 }

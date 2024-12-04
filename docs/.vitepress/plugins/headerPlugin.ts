@@ -8,7 +8,7 @@ export function HeaderPlugin() {
         async transform(code: string, id:string) {
 
             if (!id.match(/\.md\b/)) return null
-            console.log(code,id)
+            // console.log(code,id)
             const cleanContent = cleanMarkdownContent(code)
 
 
