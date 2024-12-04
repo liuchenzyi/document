@@ -17,9 +17,9 @@ import ArticleHeader from '../components/ArticleHeader.vue'
 
 const CssRenderStyle = defineComponent({
 	setup() {
-		const collect = inject('css-render-collect')
+		const collect = inject('css-render-collect') as ()=> string
 		return {
-			style: collect()
+			style:  collect()
 		}
 	},
 	render() {
