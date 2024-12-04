@@ -16,6 +16,7 @@ const vitePressOptions = {
 		// https://vitepress.dev/reference/default-theme-config
 		nav: [
 			{text: '首页', link: '/'},
+			{text: '网站收藏', link: '/website.html'},
 			{text: 'Examples', link: '/markdown-examples'}
 		],
 		sidebar: [],

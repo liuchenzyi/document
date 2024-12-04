@@ -1,7 +1,7 @@
-// import { Plugin } from 'vite'
+import type { Plugin } from 'vite'
 import { getReadingTime } from '../utils/getReadingTime'
 
-export function HeaderPlugin() {
+export function HeaderPlugin():Plugin {
     return {
         name: 'header-plugin',
         enforce: 'pre',
