@@ -2,9 +2,12 @@
   "compilerOptions": {
     "target": "es2020",
     "module": "ESNext",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "removeComments": true // 编译输出文件中是否删除源文件中的注释
+  },
+  "include": ["types/**","types/vitepress-plugin-image-viewer.d.ts","types/**/*.ts"]
 }
