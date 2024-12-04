@@ -18,6 +18,9 @@
     "vitepress-sidebar": "^1.29.0"
   },
   "dependencies": {
+    "@vicons/material": "^0.12.0",
+    "dayjs": "^1.11.13",
+    "naive-ui": "^2.40.3",
     "pagefind": "^1.2.0",
     "viewerjs": "^1.11.7",
     "vitepress-plugin-codeblocks-fold": "^1.2.28",

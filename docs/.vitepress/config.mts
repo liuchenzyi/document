@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { withSidebar } from 'vitepress-sidebar';
 import { pagefindPlugin } from 'vitepress-plugin-pagefind'
+import {HeaderPlugin} from "./plugins/headerPlugin";
 
 
 // https://vitepress.dev/reference/site-config
@@ -69,7 +70,14 @@ const vitePressOptions = {
 						.trim()
 				},
 			}),
-		]
+			HeaderPlugin(),
+		],
+        server: {
+            host: '0.0.0.0',
+            port: 5000,
+            // 是否开启 https
+            https: false,
+        },
 	},
 	outDir: "./dist",
 }

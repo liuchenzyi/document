@@ -121,7 +121,7 @@ pnpm docs:dev
 
 官方文档：[vitepress目录结构](https://vitepress.dev/zh/guide/getting-started#file-structure)
 
-需要手动新建文件夹，我的目录结构如下：
+需要手动新建文件夹，目录结构如下：
 
 ```
 .
