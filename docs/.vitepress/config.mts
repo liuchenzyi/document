@@ -116,6 +116,10 @@ const vitePressSidebarOptions = {
 	collapsed: false,
 	capitalizeFirst: true,
 	debugPrint: false,
+	useTitleFromFrontmatter:true,
+	excludeFilesByFrontmatterFieldName:"exclude",
+	useFolderLinkFromIndexFile:true,
+	useFolderTitleFromIndexFile:true
 };
 
 export default defineConfig(withSidebar(vitePressOptions, vitePressSidebarOptions));

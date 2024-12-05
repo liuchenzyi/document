@@ -1,6 +1,7 @@
 ---
 aside: false
 layout: home
+exclude: true
 ---
 
 

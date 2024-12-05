@@ -30,19 +30,6 @@ export default [
 				"updateTime": 0,
 				"total": 6,
 				"lasttime": 1731759710466
-			},
-			{
-				"name": "豆瓣",
-				"target": "http://www.douban.com",
-				"type": "site",
-				"bgType": "image",
-				"bgColor": "rgba(0, 0, 0, 0)",
-				"bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/e9b0df13819c1029fdc4287a6a83bf6c.png",
-				"origin": "622af28e7c5d1e54a2d12720",
-				"id": "icon-1g8s67njg3z2kn9f75eeoz7d3uv",
-				"updateTime": 0,
-				"total": 0,
-				"lasttime": 0
 			}
 		]
 	},
@@ -800,69 +787,6 @@ export default [
 		]
 	},
 	{
-		"id": "category-1h56a2ep2i0jjmd8jntpbxi9blz",
-		"iconClass": "icon-keji",
-		"name": "工作",
-		"updateTime": 1733050753363,
-		"children": [
-			{
-				"name": "PM系统",
-				"target": "https://project.hysz.co/user/home/index\n",
-				"bgType": "color",
-				"bgImage": "",
-				"bgColor": "rgba(244, 171, 18, 1)",
-				"type": "site",
-				"bgText": "PM",
-				"origin": "color",
-				"id": "icon-1h6q57nn2ylgx3hyqf50klbr4tc",
-				"updateTime": 1698976515071,
-				"total": 1,
-				"lasttime": 1733050740350
-			},
-			{
-				"name": "蓝湖",
-				"target": "https://lanhuapp.com/dashboard/#/",
-				"bgType": "image",
-				"bgImage": "https://static.wetab.link/user-custom-icon/zh/642fd2cd99615689d6eff926/user-custom-icon1hekrqn54pp30vrsbcx6b2xm5x0.png",
-				"bgColor": "",
-				"type": "site",
-				"origin": "online",
-				"id": "icon-1hekrqnj35ta3hagqim9lo4givv",
-				"updateTime": 1700786484709,
-				"total": 1,
-				"lasttime": 1717999794335
-			},
-			{
-				"name": "DTS",
-				"target": "http://172.16.8.94:8080/doc/api/HeatMap.html#clear__anchor",
-				"bgType": "color",
-				"bgImage": "",
-				"bgColor": "rgba(118, 33, 249, 1)",
-				"type": "site",
-				"bgText": "FD",
-				"origin": "color",
-				"id": "icon-1hekrsgcfafcdpbmpl1hj28seoi",
-				"updateTime": 1699359900047,
-				"total": 0,
-				"lasttime": 0
-			},
-			{
-				"name": "CIM接口文档",
-				"target": "https://test-cim-web.hysz.co/doc.html",
-				"bgType": "color",
-				"bgImage": "",
-				"bgColor": "rgba(28, 28, 30, 1)",
-				"type": "site",
-				"bgText": "C",
-				"origin": "color",
-				"id": "icon-1hem5he76s0d64b7nxa7nj98aj2",
-				"updateTime": 1699403577573,
-				"total": 1,
-				"lasttime": 1733050697286
-			}
-		]
-	},
-	{
 		"id": "category-1i1k079qblzpvhfms82qypxq27a",
 		"iconClass": "icon-yuedu",
 		"name": "阅读",
@@ -1042,19 +966,6 @@ export default [
 				"lasttime": 0
 			},
 			{
-				"name": "CSDN",
-				"target": "http://www.csdn.net/",
-				"type": "site",
-				"bgType": "image",
-				"bgColor": "rgba(0, 0, 0, 0)",
-				"bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/226d9bd6e7176a22d1696d751947a178.png",
-				"origin": "622af28e7c5d1e54a2d129cd",
-				"id": "icon-1g8s7eqveirhzg0r37fwrby56gc",
-				"updateTime": 0,
-				"total": 0,
-				"lasttime": 0
-			},
-			{
 				"name": "人人都是产品经理",
 				"target": "http://www.woshipm.com/",
 				"type": "site",
@@ -1063,105 +974,6 @@ export default [
 				"bgImage": "https://infinityicon.infinitynewtab.com/icon/8bffc9cf5c9f6e5980bf21e7af3a4462.png",
 				"origin": "622af28e7c5d1e54a2d12d08",
 				"id": "icon-1g8s7842bizrwubewdpovko6bxy",
-				"updateTime": 0,
-				"total": 0,
-				"lasttime": 0
-			}
-		]
-	},
-	{
-		"id": "category-1g8q0krkbktusp8iy05pniynhp4",
-		"iconClass": "icon-gouwu",
-		"name": "购物",
-		"updateTime": 0,
-		"children": [
-			{
-				"name": "Amazon",
-				"target": "https://inftab.com/amazon/",
-				"type": "site",
-				"bgType": "image",
-				"bgColor": "rgba(0, 0, 0, 0)",
-				"bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/e67eed044bf08fbcac16a0527fcc165a.png",
-				"origin": "622af28e7c5d1e54a2d12da1",
-				"id": "icon-1g8s7j85i7i6fx9yrqdnw34fjj4",
-				"updateTime": 0,
-				"total": 0,
-				"lasttime": 0
-			},
-			{
-				"name": "天猫精选",
-				"target": "https://s.click.taobao.com/t?infinityType=tmall&e=m%3D2%26s%3DV5ucSP%2F1kT4cQipKwQzePCperVdZeJviK7Vc7tFgwiFRAdhuF14FMRBynALhehQ4RitN3%2FurF3xNWm%2FATOfjswMAKinyMfntv%2FFgqkVH8133BMlVy3qlGE2srC8Mk09eQgZss1jm63jcHtRpEUy6RPalRWTdFmFpJPwiig1bxLMnyi1UQ%2F17I10hO9fBPG8oXH%2BQH9e66Y4%3D",
-				"type": "site",
-				"bgType": "image",
-				"bgColor": "rgba(0, 0, 0, 0)",
-				"bgImage": "https://infinityicon.infinitynewtab.com/icon/be0ab26cf4dc6239c98791f7b18b633a.png",
-				"origin": "622af28e7c5d1e54a2d12dcf",
-				"id": "icon-1g8s7jhjhz9pd8656tb20ccczb4",
-				"updateTime": 0,
-				"total": 0,
-				"lasttime": 0
-			},
-			{
-				"name": "淘宝网",
-				"target": "https://ai.taobao.com/?pid=mm_50570328_39070332_145428725",
-				"type": "site",
-				"bgType": "image",
-				"bgColor": "rgba(0, 0, 0, 0)",
-				"bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/05dfef464cb99231a44521fde12adc80.png",
-				"origin": "622af28e7c5d1e54a2d12db6",
-				"id": "icon-1g8s6afo2w5jm7y945jlhea6n4z",
-				"updateTime": 0,
-				"total": 0,
-				"lasttime": 0
-			},
-			{
-				"name": "当当网",
-				"target": "http://union.dangdang.com/transfer.php?from=P-319540-infinity&amp;amp;amp;ad_type=10&amp;amp;amp;sys_id=1&amp;amp;amp;backurl=http://www.dangdang.com",
-				"type": "site",
-				"bgType": "image",
-				"bgColor": "rgba(0, 0, 0, 0)",
-				"bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/513b4167dd3c9bfd83f6ceae56d7bf7f.png",
-				"origin": "622af28e7c5d1e54a2d12da8",
-				"id": "icon-1g8s7akil7kgozgjf0dk7h1mh6o",
-				"updateTime": 0,
-				"total": 0,
-				"lasttime": 0
-			},
-			{
-				"name": "什么值得买",
-				"target": "http://www.smzdm.com/",
-				"type": "site",
-				"bgType": "image",
-				"bgColor": "rgba(0, 0, 0, 0)",
-				"bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/82083b3712985e0aded08d10e50cb902.png",
-				"origin": "622af28e7c5d1e54a2d12756",
-				"id": "icon-1g8s7jo11jvirlcksbc0cy9v8po",
-				"updateTime": 0,
-				"total": 0,
-				"lasttime": 0
-			},
-			{
-				"name": "飞猪",
-				"target": "https://s.click.taobao.com/t?infinityType=alitrip&e=m%3D2%26s%3DgWbgDzAE0zMcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAg8q8DF9oG0OjiRkxbhwQNwqDrUHgVoNpvVKm9Ob0IT9VuIJQ3hZR078JvDfi2GotpoTgr1w%2FQDpNgYL1oa%2FqkrlSg55GVX5wQpJxXZWmPBrLyo8ABgHx20aHks2%2FfPFu3EqY%2Bakgpmw",
-				"type": "site",
-				"bgType": "image",
-				"bgColor": "rgba(0, 0, 0, 0)",
-				"bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/a7ed1a2bd88d75ed6a04c8a7aeb26097.png",
-				"origin": "622af28e7c5d1e54a2d12da3",
-				"id": "icon-1g8s7jta1hxeg95e9om4z6pky6j",
-				"updateTime": 0,
-				"total": 0,
-				"lasttime": 0
-			},
-			{
-				"name": "识货",
-				"target": "http://www.shihuo.cn/",
-				"type": "site",
-				"bgType": "image",
-				"bgColor": "rgba(0, 0, 0, 0)",
-				"bgImage": "https://infinityicon.infinitynewtab.com/icon/1c3dda56f26a98de85d4e55c87cd7622.png",
-				"origin": "622af28e7c5d1e54a2d12c65",
-				"id": "icon-1g8s7k2opy8en6s2vcsgzzy376d",
 				"updateTime": 0,
 				"total": 0,
 				"lasttime": 0
