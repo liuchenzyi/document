@@ -11,15 +11,16 @@
 优点：`vitepress可配置项、api都比较多，大部分功能都能实现`
 
 :::details 相关链接
-[vuepress博客](https://lee-holden.github.io/vuepress-blog/)
-
-[vuepress仓库地址](https://github.com/lee-holden/vuepress-blog)
 
 [vitepress博客](https://dddhl.cn)
 
 [vitepress仓库地址](https://github.com/lee-holden/blog)
 
 [vitepress-blog-template](https://github.com/lee-holden/vitepress-blog-template)
+
+[vitepress 官方文档 ](https://vitepress.dev/zh/)
+[vitepress-sidebar ](https://vitepress-sidebar.cdget.com/zhHans/)
+
 :::
 
 ## 博客介绍
