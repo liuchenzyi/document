@@ -1,7 +1,11 @@
 ---
 title: node 包管理器 常用操作
+tags :
+  - node
+  - npm
+  - yarn
+  - pnpm
 ---
-
 # npm、yarn、pnpm 常用操作
 ## 1 镜像源
 ### 1.1镜像源选择

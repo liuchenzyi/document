@@ -82,6 +82,6 @@ export default {
         const { frontmatter } = useData();
        
         // codeblocks 代码折叠插件
-        codeblocksFold({ route, frontmatter }, true, 200);
+        // codeblocksFold({ route, frontmatter }, true, 200);
     }
 };

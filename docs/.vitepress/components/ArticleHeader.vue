@@ -56,7 +56,7 @@ defineProps<{
 <style scoped lang="css">
 .header {
 	width: 100%;
-	
+	margin-top: 1vh;
 	.info {
 		width: 100%;
 		display: flex;
@@ -65,7 +65,7 @@ defineProps<{
 		flex-wrap: wrap;
 		font-size: 14px;
 		
-		justify-content: space-around;
+		justify-content: space-between;
 		--grey-color-1: rgb(134, 144, 156);
 		color: var(--grey-color-1);
 		
@@ -93,7 +93,7 @@ defineProps<{
 		display: flex;
 		flex-wrap: wrap;
 		gap: 10px;
-		
+		margin-top: 1vh;
 		
 	}
 }
