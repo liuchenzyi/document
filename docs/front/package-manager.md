@@ -207,7 +207,8 @@ pnpm ls
 #查看全局安装的依赖：
 pnpm list --global
 pnpm ls --g
-
+# 查看全局安装的包及其路径：
+pnpm list --global --long
 #检查过期的依赖：
 pnpm outdated
 ```
