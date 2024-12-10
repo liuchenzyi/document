@@ -3,6 +3,7 @@ import {
 	AccessTimeFilled,
 	ArticleOutlined,
 	DiscountOutlined,
+	BorderColorOutlined,
 	UpdateOutlined
 } from '@vicons/material'
 import {NIcon, NTag} from 'naive-ui'
@@ -33,6 +34,13 @@ defineProps<{
 				文章字数:
 				<p>{{ words }}</p>
 				字
+			</div>
+			<div class="write" v-if="frontmatter.date">
+				<NIcon :size="18">
+					<BorderColorOutlined />
+				</NIcon>
+				发布日期:
+				<p>{{ dayjs(frontmatter.date).format('YYYY-MM-DD') }}</p>
 			</div>
 			<div class="update">
 				<NIcon :size="20">

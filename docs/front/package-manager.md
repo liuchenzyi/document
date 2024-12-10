@@ -5,6 +5,7 @@ tags:
   - npm
   - yarn
   - pnpm
+date: '2024-12-06 18:50:39'
 ---
 
 # npm、yarn、pnpm 常用操作

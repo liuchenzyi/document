@@ -1,5 +1,5 @@
 import type { Plugin } from 'vite'
-import  matter from 'gray-matter';
+import matter from 'gray-matter';
 
 
 import { getReadingTime } from '../utils/getReadingTime'
@@ -16,7 +16,7 @@ export function HeaderPlugin():Plugin {
 
             const {content = "",data} = result
             const {header = true} = data
-            console.log(JSON.stringify(result))
+            // console.log(JSON.stringify(result))
             // console.log(code,id)
 
             if(header){

@@ -1,3 +1,6 @@
+---
+date: '2024-11-26 23:00:16'
+---
 # Markdown Extension Examples
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
