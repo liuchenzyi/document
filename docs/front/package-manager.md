@@ -230,3 +230,32 @@ pnpm config list
 ```
 
 :::
+
+## 查看第三方库使用的依赖
+::: code-group
+```bash [npm]
+# 查看依赖
+npm view <package-name> dependencies
+ 
+# 查看依赖
+npm view <package-name> dependencies --json
+
+# 查看开发依赖
+npm view <package-name> devDependencies --json
+```
+
+```bash [yarn]
+# 查看依赖
+yarn info <package-name> dependencies
+ 
+# 查看所有依赖
+yarn info <package-name> --json | grep dependencies
+```
+```bash [pnpm]
+# 查看依赖
+pnpm info <package-name> dependencies
+
+# 查看所有依赖（包括开发依赖）:
+pnpm info <package-name> allDependencies
+```
+:::

@@ -121,7 +121,7 @@ const vitePressSidebarOptions = [
         scanStartPath: "front",
         resolvePath: "/front/",
         collapsed: true,
-        debugPrint: true,
+        debugPrint: false,
         useTitleFromFrontmatter: true,  //
         excludeFilesByFrontmatterFieldName: "exclude",
         useFolderLinkFromIndexFile: true,
@@ -133,7 +133,7 @@ const vitePressSidebarOptions = [
         scanStartPath: "gitea",
         resolvePath: "/gitea/",
         collapsed: true,
-        debugPrint: true,
+        debugPrint: false,
         useTitleFromFrontmatter: true,  //
         excludeFilesByFrontmatterFieldName: "exclude",
         useFolderLinkFromIndexFile: true,
@@ -145,7 +145,7 @@ const vitePressSidebarOptions = [
         scanStartPath: "examples",
         resolvePath: "/examples/",
         collapsed: true,
-        debugPrint: true,
+        debugPrint: false,
         useTitleFromFrontmatter: true,  //
         excludeFilesByFrontmatterFieldName: "exclude",
         useFolderLinkFromIndexFile: true,
@@ -157,7 +157,7 @@ const vitePressSidebarOptions = [
         scanStartPath: "test",
         resolvePath: "/test/",
         collapsed: true,
-        debugPrint: true,
+        debugPrint: false,
         useTitleFromFrontmatter: true,  //
         excludeFilesByFrontmatterFieldName: "exclude",
         useFolderLinkFromIndexFile: true,
@@ -169,7 +169,7 @@ const vitePressSidebarOptions = [
         scanStartPath: "vite-press",
         resolvePath: "/vite-press/",
         collapsed: true,
-        debugPrint: true,
+        debugPrint: false,
         useTitleFromFrontmatter: true,  //
         excludeFilesByFrontmatterFieldName: "exclude",
         useFolderLinkFromIndexFile: true,

@@ -36,6 +36,9 @@ importers:
       '@css-render/vue3-ssr':
         specifier: ^0.15.14
         version: 0.15.14(vue@3.5.13)
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
       vite:
         specifier: ^6.0.2
         version: 6.0.2
