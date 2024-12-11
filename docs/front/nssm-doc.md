@@ -46,7 +46,7 @@ sc delete servername # windows删除服务命令
 
 ![nssm-1.png](../public/nssm-1.png)
 
-:::details 产靠链接
+:::details 参考链接
 
 [NSSM通俗易懂介绍,安装与使用](https://blog.csdn.net/raojiaxing_/article/details/125291372)
 
