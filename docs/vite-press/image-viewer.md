@@ -9,7 +9,8 @@ date: '2024-12-12 22:13:18'
 
 # 添加图像查看插件
 
-vitepress 文档中，图片点击没有任何效果，可以使用 [vitepress-plugin-image-viewer](https://github.com/T-miracle/vitepress-plugin-image-viewer)
+vitepress 文档中，图片点击没有任何效果，
+可以使用 [vitepress-plugin-image-viewer](https://github.com/T-miracle/vitepress-plugin-image-viewer)
 
 ## 介绍
 
@@ -19,23 +20,23 @@ vitepress 文档中，图片点击没有任何效果，可以使用 [vitepress-p
 
 ## 使用
 
-- 安装
-  ::: code-group
 
-  ```sh [pnpm]
-  # Tip: If you use pnpm to install, you need to install viewerjs additionally.
-  pnpm add vitepress-plugin-image-viewer viewerjs
-  ```
+::: code-group
 
-  ```sh [npm]
-  npm i vitepress-plugin-image-viewer
-  ```
+```sh [pnpm]
+# Tip: If you use pnpm to install, you need to install viewerjs additionally.
+pnpm add vitepress-plugin-image-viewer viewerjs
+```
 
-  ```sh [yarn]
-  yarn add vitepress-plugin-image-viewer
-  ```
+```sh [npm]
+npm i vitepress-plugin-image-viewer
+```
 
-  :::
+```sh [yarn]
+yarn add vitepress-plugin-image-viewer
+```
+
+:::
 
 - `.vitepress/theme/index.ts` 文件
 
