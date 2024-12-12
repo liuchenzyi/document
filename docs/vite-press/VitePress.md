@@ -1,5 +1,8 @@
 ---
 date: '2024-12-01 14:51:20'
+title: VitePress 基本使用
+tags:
+  - vitepress
 ---
 
 # vite press博客搭建
@@ -32,7 +35,6 @@ date: '2024-12-01 14:51:20'
 - GitHub评论系统
 - 自动配置侧边栏
 
-- 未完待续......
 
 ## 1. 安装
 
@@ -231,87 +233,5 @@ export default {
 	}
 }
 ```
-
-### 5.1 使用插件
-
-插件可以自动生成侧边栏并且根据文章名称日期排序
-
-[vitepress-sidebar](https://vitepress-sidebar.cdget.com/)
-
-::: code-group
-
-```sh [npm]
-npm i -D vitepress-sidebar
-```
-
-```sh [yarn]
-yarn add -D vitepress-sidebar
-```
-
-```sh [pnpm]
-pnpm add -D vitepress-sidebar
-```
-
-:::
-
-`.vitepress/config.mts` 文件，具体配置请看官方文档
-
-
-
-
-## 6. 图片放大
-
-vitepress文章中，图片点击没有任何效果，可以使用 [vitepress-plugin-image-viewer](https://github.com/T-miracle/vitepress-plugin-image-viewer)
-这个插件
-
-- 安装
-  ::: code-group
-
-  ```sh [pnpm]
-  # Tip: If you use pnpm to install, you need to install viewerjs additionally.
-  pnpm add vitepress-plugin-image-viewer viewerjs
-  ```
-
-  ```sh [npm]
-  npm i vitepress-plugin-image-viewer
-  ```
-
-  ```sh [yarn]
-  yarn add vitepress-plugin-image-viewer
-  ```
-
-  :::
-
-- `.vitepress/theme/index.ts` 文件
-
-  ```ts{2-4,11,23-26}
-  // ...
-  import 'viewerjs/dist/viewer.min.css'
-  import imageViewer from 'vitepress-plugin-image-viewer'
-  import vImageViewer from 'vitepress-plugin-image-viewer/lib/vImageViewer.vue'
-
-  // ...
-  export default {
-    extends: DefaultTheme,
-    Layout: NaiveUIProvider,
-    enhanceApp: ({ app, router }) => {
-      app.component('ArticleHeader', ArticleHeader)
-      app.component('vImageViewer', vImageViewer)
-      if (import.meta.env.SSR) {
-        const { collect } = setup(app)
-        app.provide('css-render-collect', collect)
-      }
-      if (inBrowser) {
-        router.onAfterRouteChanged = () => {
-          busuanzi.fetch()
-        }
-      }
-    },
-    setup() {
-      const route = useRoute()
-      imageViewer(route)
-    },
-  }
-  ```
 
 
