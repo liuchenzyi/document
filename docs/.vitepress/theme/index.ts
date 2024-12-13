@@ -12,6 +12,9 @@ const { Layout } = DefaultTheme
 // @ts-ignore
 import ArticleHeader from '../components/ArticleHeader.vue'
 
+import '../styles/global.scss'
+
+
 const CssRenderStyle = defineComponent({
 	setup() {
 		const collect = inject('css-render-collect') as ()=> string
