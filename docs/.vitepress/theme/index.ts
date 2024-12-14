@@ -17,7 +17,7 @@ import ArticleHeader from '../components/ArticleHeader.vue'
 import { darkTheme } from 'naive-ui'
 
 
-import '../styles/global.scss'
+// import '../styles/global.scss'
 
 
 const CssRenderStyle = defineComponent({
@@ -45,21 +45,14 @@ const VitepressPath = defineComponent({
 
 const NaiveUIProvider = defineComponent({
 	setup(props, { slots }) {
-		const route = useRoute();
 		const { isDark } = useData();
-
-		onMounted(() => {
-			// 在这里添加你需要在组件挂载后执行的逻辑
-			console.log('NaiveUIProvider component has been mounted');
-		});
-
 		return () => h(
 			NConfigProvider,
 			{ abstract: true, inlineThemeDisabled: true, theme: isDark.value ? darkTheme : undefined },
 			{
 				default: () => [
 					h(Layout, null, { default: slots.default?.() }),
-					import.meta.env.SSR ? [h(CssRenderStyle), h(VitepressPath)] : null
+					// import.meta.env.SSR ? [h(CssRenderStyle), h(VitepressPath)] : null
 				]
 			}
 		);
@@ -93,7 +86,6 @@ export default {
 
 		const { isDark } = useData()
 
-		console.log(isDark)
 		onMounted(() => {
 			// 获取当前页面的标题
 			// console.log(route.data.title);

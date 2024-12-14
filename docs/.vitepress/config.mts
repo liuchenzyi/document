@@ -20,7 +20,7 @@ const vitePressOptions = {
             {text: '前端', link: '/front/'},
             {text: 'gitea', link: '/gitea/'},
             {text: '测试', link: '/test/'},
-            {text: '搭建', link: '/vite-press/'},
+            {text: '博客搭建', link: '/vite-press/'},
             {text: 'Examples', link: '/examples/'}
         ],
         sidebar: [],
@@ -80,6 +80,16 @@ const vitePressOptions = {
             }),
             HeaderPlugin(),
         ],
+
+		// 设置scss的api类型为modern-compiler
+		css: {
+			preprocessorOptions: {
+				scss: {
+					api: 'modern-compiler'
+				}
+			}
+		},
+
         build: {
             target: 'esnext'
         },
