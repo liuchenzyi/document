@@ -16,3 +16,15 @@ tags:
 
 
 ## 将 vitepress 主题与 Naive UI 关联
+
+
+
+## 报错解决
+
+Hydration completed but contains mismatches
+
+::: details 参考链接
+- [Hydration completed but contains mismatches](https://github.com/vitejs/vitepress/issues/1168)
+
+:::
+

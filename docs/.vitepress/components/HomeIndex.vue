@@ -21,7 +21,7 @@ const jump = (path: string) => {
 				<template #default>
 					<n-card :title="item.frontmatter.title" hoverable @click="jump(item.url)">
 						<div class="tags">
-							<n-tag v-for="tagItem in item.frontmatter.tags" :bordered="false" type="info">
+							<n-tag v-for="tagItem in item.frontmatter.tags"  type="info">
 								{{ tagItem }}
 								<template #icon>
 									<n-icon :component="DiscountOutlined" :size="16"/>
