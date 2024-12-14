@@ -267,7 +267,6 @@ export default {
 
 在 Shiki 的代码仓库中，可以找到[合法的编程语言列表](https://shiki.style/languages)。
 
-还可以全局配置中自定义语法高亮主题。有关详细信息，参见 [`markdown` 选项](../reference/site-config#markdown)得到更多信息。
 
 ## 在代码块中实现行高亮 {#line-highlighting-in-code-blocks}
 
@@ -601,7 +600,7 @@ export default config
 
 ## Basics
 
-<!--@include: ./parts/basics.md-->
+<!--@include: ./index.md-->
 ```
 
 **Part file** (`parts/basics.md`)
@@ -637,7 +636,7 @@ Can be created using `.foorc.json`.
 
 ## Basics
 
-<!--@include: ./parts/basics.md{3,}-->
+<!--@include: ./index.md{3,}-->
 ```
 
 **Part file** (`parts/basics.md`)
