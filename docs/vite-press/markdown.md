@@ -31,7 +31,7 @@ VitePress 使用 markdown-it 作为 Markdown 渲染器。
 :smiley:
 
 
-
+[所有支持的 emoji 列表](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.mjs)
 
 
 ## 目录表 (TOC) {#table-of-contents}
