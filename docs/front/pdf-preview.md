@@ -1,9 +1,9 @@
 ---
-title: "pdf 预览"
+title: pdf 预览
 tags:
   - pdf
   - pdf.js
-
+date: '2024-12-17 23:04:35'
 ---
 
 # 使用pdf.js预览pdf文件
