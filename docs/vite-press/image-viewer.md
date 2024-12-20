@@ -53,7 +53,6 @@ yarn add vitepress-plugin-image-viewer
       app.component('ArticleHeader', ArticleHeader)
       if (import.meta.env.SSR) {
         const { collect } = setup(app)
-        app.provide('css-render-collect', collect)
       }
       if (inBrowser) {
         router.onAfterRouteChanged = () => {

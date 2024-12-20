@@ -72,8 +72,8 @@ const vitePressOptions = {
                 searchBy: '搜索',
                 customSearchQuery(input: string) {
                     return input
-                        .replace(/[\u4E00-\u9FA5]/g, ' $& ')
-                        .replace(/\s+/g, ' ')
+                        // .replace(/[\u4E00-\u9FA5]/g, ' $& ')
+                        .replace(/\s+/g, ' ')  // 将 多个 空白字符串替换为单个空格
                         .trim()
                 },
             }),
