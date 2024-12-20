@@ -4,7 +4,7 @@ tags:
   - pdf
   - pdf.js
 date: '2024-12-17 23:04:35'
-intro: pdf.js 预览pdf文件
+info: pdf.js 预览pdf文件
 ---
 
 # 使用pdf.js预览pdf文件
@@ -22,3 +22,5 @@ intro: pdf.js 预览pdf文件
 ## 测试
 
 ## 修改代码
+
+mjs mime type 问题
