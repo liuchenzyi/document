@@ -196,6 +196,10 @@ export default [
 		"name": "工具",
 		"children": [
 			{
+				"name": "全栈工具 ",
+				"target": "https://tools.qzxdp.cn/",
+			},
+			{
 				"name": "开源在线工具 ",
 				"target": "http://tool.oschina.net/",
 			},
