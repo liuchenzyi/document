@@ -4,15 +4,16 @@ tags:
   - pdf
   - pdf.js
 date: '2024-12-17 23:04:35'
-info: pdf.js 预览 pdf 文件
+info: pdf 文件预览
 ---
 
 # 使用 pdf.js 预览 pdf 文件
 
 在进行 PDF 文件 预览时，原本打算使用浏览器内置的 pdf 预览，即使用 `iframe` 标签 加载，但是发现在浏览器中会报错：
+
 `Refused to display 'http://localhost:8080/' in a frame because it set 'X-Frame-Options'。`
 
-测试了几个 pdf 预览库，最终选择了 pdf.js
+查阅相关资料，发现可以使用 pdf.js 来解决，pdf.js 是一个开源的库，可以轻松地实现 PDF 文件的预览。
 
 ## PDF.js 库简介和功能概述
 PDF.js 是一个由 Mozilla 开发的 JavaScript 库，用于在 Web 上显示 PDF 文件。它具有以下功能：
@@ -50,27 +51,18 @@ PDF.js 是一个由 Mozilla 开发的 JavaScript 库，用于在 Web 上显示 P
 ## 使用
 
 
-将下载的文件解压放到 public 文件夹下,为了区分，我单独建立了一个文件夹
+将下载的文件 解压放到项目的 public 文件夹下,为了区分，我单独建立了一个`pdfjs` 文件夹
 
 本文使用 `iframe` 的方式来显示 pdf 文件 参数：`file` 是 pdf 文件路径
 
 ```vue
-<script setup lang="ts">
-</script>
-
 <template>
-	<iframe src="/pdfjs/web/compressed.tracemonkey-pldi-09.pdf" style="width: 100%;height: 100%;"/>
+	<iframe src="/pdfjs/web/viewer.html?file=file=http://localhost:5500/pdfjs/web/compressed.tracemonkey-pldi-09.pdf" style="width: 100%;height: 100%;"/>
 </template>
-
-<style scoped>
-
-</style>
 
 ```
 
 ![pdf-preview](../public/pdfjs-preview.png)
-
-
 
 
 ## 跨域问题
@@ -78,7 +70,7 @@ PDF.js 是一个由 Mozilla 开发的 JavaScript 库，用于在 Web 上显示 P
 
 ![pdf-erorr](../public/pdfjs-error.png)
 
-会有跨域的问题，需要对源码进行修改, 将web/viewer.js中第 如下代码注释掉
+会有跨域的问题，需要对源码进行修改, 将`web/viewer.js` 文件中 如下代码注释掉
 
 ```js
 if (fileOrigin !== viewerOrigin) {
@@ -89,10 +81,12 @@ if (fileOrigin !== viewerOrigin) {
 
 ![pdf-preview](../public/pdfjs-source.png)
 
+可以正常查看 pdf 文件
 
 ## mjs mime type 问题
 
-项目打包部署后，在浏览器控制台报如下错误
+
+项目打包部署后，在浏览器控制台报如下错误：
 
 ```
 Failed to load module script: The server responded with a non-JavaScript MIME type of "application/octet-stream".
@@ -102,7 +96,7 @@ Strict MIME type checking is enforced for module scripts per HTML spec.
 **原因是** nginx无法识别 mjs 文件，设置的响应类型为 `Content-Type:application/octet-stream` ，
 导致浏览器直接下载文件，而不是当作js脚本执行。
 
-**解决方法**修改 nginx 配置文件下的 `mime.types` 文件，在 application/javascript 后面添加 mjs ，将 mjs 文件的响应类型修改为 `application/javascript`。
+**解决方法**：修改 nginx 配置文件下的 `mime.types` 文件，在 application/javascript 后面添加 mjs ，将 mjs 文件的响应类型修改为 `application/javascript`,重启nginx服务。
 
 ```
 types {
@@ -119,3 +113,4 @@ types {
     // ...
 }
 ```
+
