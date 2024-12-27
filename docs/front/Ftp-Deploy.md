@@ -14,7 +14,12 @@ date: '2024-12-26 22:53:24'
 ## 前提条件
 
 服务器开启了 ftp 服务，且具有操作文件的权限。
-这里使用的是 window server 操作系统，可以通过 IIS 来开启 ftp 服务
+这里使用的是 window server 操作系统，可以通过 IIS 来开启 ftp 服务 具体操着步骤参考 [Windows Server 2019 搭建FTP站点](https://www.cnblogs.com/wencg/p/13450938.html)
+
+
+::: danger 注意
+为了安全起见，一定要设置密码
+:::
 
 先整理一下我们部署的操作步骤：
 
@@ -44,6 +49,9 @@ pnpm install basic-ftp --save -D
 :::
 
 ### 2、测试 ftp 连接
+直接打开window 资源管理器，直接输入 `ftp://ip:端口号`，查看是否可以正常连接，若可以正常连接会看到 服务器对应目录下的文件
+
+
 ```js
 import {Client} from 'basic-ftp'
 
@@ -54,15 +62,13 @@ const test = async () => {
     client.ftp.verbose = true  //所有套接字通信的调试级日志记录
     try {
         await client.access({
-            host: "server",
-            // user: "very",
-            // password: "password",
-            // secure: true
+            host: "******",
+            user: "******",
+            password: "******",
+            secure: true
         })
-        // console.log(await client.list())
-        // await client.downloadTo("local.config", "output/web.config")
-        // await client.uploadFrom("local.config", "output/web-copy.config")
-        await client.uploadFromDir("../../dist", "output/dist2")
+		const result = await client.list()
+        console.log(result)
     } catch (err) {
         console.log(err)
     }
@@ -73,6 +79,14 @@ test()
 ```
 
 ### 3、备份与上传文件
+
+**包备份**及将当前服务器上的包进行重命名
+
+备份包的名称规则一般为 日期-版本号
+
+
+
+**上传包**
 
 
 ### 4、添加打印日志

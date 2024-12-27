@@ -17,7 +17,10 @@ const test = async () => {
         // console.log(await client.list())
         // await client.downloadTo("local.config", "output/web.config")
         // await client.uploadFrom("local.config", "output/web-copy.config")
-        await client.uploadFromDir("../../dist", "output/dist2")
+        // await client.uploadFromDir("../../dist", "output/dist2")
+
+        await client.rename('output/dist2', 'output/dist3')
+
     } catch (err) {
         console.log(err)
     }
@@ -25,3 +28,13 @@ const test = async () => {
 }
 
 test()
+
+const backup = async () => {
+    const client = new Client()
+
+
+}
+
+class FtpUtils {
+
+}
