@@ -17,8 +17,9 @@ info: '记录 element-plus 使用过程中的一些问题'
 ![el-select 组件 placeholder 不显示](../public/select-1.png)
 
 ```vue
+
 <script lang="ts" setup>
-	import { reactive } from 'vue'
+	import { ref } from 'vue'
 	import { ElSelect, ElCard, ElOption } from "element-plus";
 
 	const planTypeOptions = [
@@ -28,14 +29,12 @@ info: '记录 element-plus 使用过程中的一些问题'
 		{label: '周计划', value: 4}
 	]
 
-	const form = reactive({
-		planType: '',
-	})
+	const planType = ref('')
 </script>
 
 <template>
 	<el-card>
-		<el-select v-model="form.planType" clearable placeholder="请选择计划类型">
+		<el-select v-model="planType" clearable placeholder="请选择计划类型">
 			<el-option
 				v-for="item in planTypeOptions"
 				:key="item.value" :label="item.label"
@@ -77,10 +76,10 @@ const isEmptyValue = (value: any) => {
 
 ```
 
-通过这些代码可以大致分析出
+通过这些代码可以大致分析出：
 1. `hasModelValue` 是一个计算属性，会影响 `placeholder` 的显示;
 2. 在单选模式下，`hasModelValue` 由`isEmptyValue`计算得来;
-3. `isEmptyValue`的结果取决于`props.emptyValues || config.value.emptyValues || DEFAULT_EMPTY_VALUES`
+3. `isEmptyValue`的值为`props.emptyValues || config.value.emptyValues || DEFAULT_EMPTY_VALUES`
 
 [查阅Api文档](https://element-plus.org/zh-CN/component/select.html#select-api)
 
@@ -99,4 +98,4 @@ const isEmptyValue = (value: any) => {
 
 ![el-select 正常显示](../public/select-3.png)
 
-**结论**：因为全局配置`:empty-values="[undefined, null]"`，所以当绑定的值是空字符串时，不会认为绑定的值为空，从而导致`placeholder`不显示。
+**结论**：因为全局配置了`:empty-values="[undefined, null]"`，`Select`当绑定的值是空字符串时，判断绑定的值不为空，所以`placeholder`不显示。

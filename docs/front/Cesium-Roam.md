@@ -161,6 +161,8 @@ const interpolateView = (startView, endView, t)=> {
 ```
 ## 完整代码
 
+GitHub 地址：[https://github.com/xrkffgg/Cesium-Roam](https://github.com/xrkffgg/Cesium-Roam)
+
 ## 注意事项 
 
 ### 航向角度问题
@@ -172,10 +174,10 @@ const interpolateView = (startView, endView, t)=> {
 - 359 - 358 - ... - 200 - ... - 42 - 41   
 - 359 - 360 - 1 - ... - 42 - 41
 
-需要考虑插值方向，否则旋转的方向可能与预想的旋转方向不一致
+需要考虑插旋转的方向，否则旋转的方向可能与预想的旋转方向不一致
 
 
 ### 翻滚角度问题
 - 因为在制作漫游动画时，翻滚角基本上用不到，所以我将翻滚角度设置为 0
 
-源码下载
+
