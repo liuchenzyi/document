@@ -101,3 +101,8 @@ test()
 
 编写 `vite` 的插件，通过 `vite` 的钩子，在打包完成后，执行上述的步骤。(不建议) 有时打包不需要上传
 建议配置一个单独的启动脚本，来完成打包并部署
+
+支持 `ssh2` 使用ssh 部署
+
+[前端自动化部署之ssh2和ssh2-sftp-client](https://blog.csdn.net/cuijiying/article/details/144568558)
+[ssh2-sftp-client实现前端项目自动部署](https://blog.csdn.net/qq_63358859/article/details/133880096)
