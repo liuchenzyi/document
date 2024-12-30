@@ -26,13 +26,15 @@ const test = async () => {
 		// console.log(`已上传 ${formatSize(info.bytesOverall)},共 ${sizeStr} 进度 ${ (info.bytesOverall/size).toFixed(2) }`, )
 		// 清空上一次输出的内容
 
-		log(`${frames[count++ % frames.length]} Uploading... ${info.name} `)
+		const progress = `${ (100 * (info.bytesOverall / size)).toFixed(2) }`
+
+		log(`${frames[count++ % frames.length]}  ${progress} %   共 ${sizeStr} 已上传 ${formatSize(info.bytesOverall)} Uploading... ${info.name} `)
 	})
 	try {
 		await client.access({
-			host: "server",
-			// user: "very",
-			// password: "password",
+			host: "10.126.126.3",
+			user: "Administrator",
+			password: "111233",
 			// secure: true
 		})
 		// console.log(await client.list())
