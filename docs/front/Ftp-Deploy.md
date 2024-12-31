@@ -14,8 +14,8 @@ date: '2024-12-26 22:53:24'
 ## 前提条件
 
 服务器开启了 ftp 服务，且具有操作文件的权限。
-这里使用的是 window server 操作系统，可以通过 IIS 来开启 ftp 服务 具体操着步骤参考 [Windows Server 2019 搭建FTP站点](https://www.cnblogs.com/wencg/p/13450938.html)
-
+这里使用的是 window server 操作系统，可以通过 IIS 来开启 ftp 服务
+具体操着步骤参考 [Windows Server 2019 搭建FTP站点](https://www.cnblogs.com/wencg/p/13450938.html)
 
 ::: danger 注意
 为了安全起见，一定要设置密码
@@ -34,23 +34,23 @@ date: '2024-12-26 22:53:24'
 
 ::: code-group
 
-```npm
+```shell [npm]
 npm install basic-ftp --save -D
 ```
 
-```yarn
+```shell [yarn]
 yarn add basic-ftp --save -D
 ```
 
-```pnpm
+```shell [pnpm]
 pnpm install basic-ftp --save -D
 ```
 
 :::
 
 ### 2、测试 ftp 连接
-直接打开window 资源管理器，直接输入 `ftp://ip:端口号`，查看是否可以正常连接，若可以正常连接会看到 服务器对应目录下的文件
 
+直接打开window 资源管理器，直接输入 `ftp://ip:端口号`，查看是否可以正常连接，若可以正常连接会看到 服务器对应目录下的文件
 
 ```js
 import {Client} from 'basic-ftp'
@@ -58,21 +58,21 @@ import {Client} from 'basic-ftp'
 // 测试 FTP
 
 const test = async () => {
-    const client = new Client()
-    client.ftp.verbose = true  //所有套接字通信的调试级日志记录
-    try {
-        await client.access({
-            host: "******",
-            user: "******",
-            password: "******",
-            secure: true
-        })
+	const client = new Client()
+	client.ftp.verbose = true  //所有套接字通信的调试级日志记录
+	try {
+		await client.access({
+			host: "******",
+			user: "******",
+			password: "******",
+			secure: true
+		})
 		const result = await client.list()
-        console.log(result)
-    } catch (err) {
-        console.log(err)
-    }
-    client.close()
+		console.log(result)
+	} catch (err) {
+		console.log(err)
+	}
+	client.close()
 }
 
 test()
@@ -84,29 +84,114 @@ test()
 
 备份包的名称规则一般为 日期-版本号 支持回调函数，package.json 的版本号
 
-
-
 **上传包**
 
+### 4、添加打印信息与进度显示
 
-### 4、添加打印信息与追踪显示
+日志要打印的信息
 
+- 所有文件大小
+- 已上传的文件大小
+- 百分比
+- 上传结果
+
+获取当前目录里边所有文件大小
+
+```ts
+/**
+ * 递归计算目录的总大小
+ * @param dirPath 目录路径 - 指定要计算大小的目录
+ * @returns {number} 返回目录的总大小（以字节为单位）
+ */
+const getDirSize = (dirPath: string) => {
+        // 读取目录中的所有文件和子目录
+        const files = fs.readdirSync(dirPath)
+        let size = 0
+        files.forEach(file => {
+            const filePath = path.join(dirPath, file)
+            // 获取文件或子目录的元数据
+            const stat = fs.statSync(filePath)
+            if (stat.isFile()) {
+                size += stat.size
+            } else if (stat.isDirectory()) {
+                size += getDirSize(filePath)
+            }
+        })
+        return size
+    }
+
+```
+
+获取已经上传的文件大小
+
+`basic-ftp` 提供了 `trackProgress` 方法，该方法接受一个回调函数，该回调函数会在每次上传或下载时调用，并传入一个对象，该对象包含当前上传或下载的字节数、总字节数和百分比。
+
+百分比可以通过已上传的文件大小和总文件大小计算得到。
+
+输出结果 可以统计用时，上传的文件数量，等信息
+
+当文件较多时，输出的日志会比较多，不美观，做一些优化
+
+- 进度等信息在同一行输出
+- 添加 loading
+- 给打印的结果使用颜色区分
+  要实现这些内容，需要用到 `progress.stdout`
+
+编写一个在同一行打印的函数，
+
+```ts
+const log = (content: string) => {
+    process.stdout.clearLine(0);  // 清除当前行
+    process.stdout.cursorTo(0);   // 将光标移回到行首
+    process.stdout.write(content);  // 每次从最右侧输出
+}
+```
+
+参考网上的一些资料,如`cli-spinners`，loading 可以使用 一些特殊的字符来完成，每次打印时，切换为下一个字符，
+
+```ts
+const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
+```
+
+要使 打印的结果颜色不同，可以使用 ANSI 转义码来设置控制台输出的文字颜色，详细内容可以参考
+> [使用 ANSI 转义码随心所欲地操纵你的终端(改变输出文字颜色、彩虹渐变色、高亮、加粗、移动光标、隐藏光标等)](https://blog.csdn.net/Blaze_dL/article/details/142767515)
+
+以下是一些常见的颜色代码:
+
+| 背景色 | 前景色 |        代码         |
+|:---:|:---:|:-----------------:|
+| 黑色  | 黑色  | \x1B[30m \x1B[40m |
+| 红色  | 红色  | \x1B[31m \x1B[41m |
+| 绿色  | 绿色  | \x1B[32m \x1B[42m |
+| 黄色  | 黄色  | \x1B[33m \x1B[43m |
+| 蓝色  | 蓝色  | \x1B[34m \x1B[44m |
+| 紫色  | 紫色  | \x1B[35m \x1B[45m |
+| 青色  | 青色  | \x1B[36m \x1B[46m |
+| 白色  | 白色  | \x1B[37m \x1B[47m |
+| 重置  | 重置  |      \x1B[0m      |
+
+具体使用方法 在要打印的文本前面加上对应的颜色代码，例如：
+```js
+console.log('\x1B[31m 红色  \x1B[32m 绿色 \x1B[33m 黄色 \x1B[34m蓝色 \x1B[35m 紫色 \x1B[36m 青色 \x1B[37m 白色' )
+console.log('\x1B[41m 红色  \x1B[42m 绿色 \x1B[43m 黄色 \x1B[44m蓝色 \x1B[45m 紫色 \x1B[46m 青色 \x1B[47m 白色' )
+console.log('\x1B[33m \x1B[44m 背景蓝色文字黄色 \x1B[36m \x1B[41m 背景红色文字青色')
+```
+**输出:**
+![打印结果](../public/log-with-color.png)
 添加回调
 
 记录文件个数
 
-格式化输出 
+格式化输出
 开始上传
 loading 百分比 共 已上传 当前处理的文件
 上传结束
 
 结果 成功上传 多少个文件，失败多少个
 
-
 获取本地文件加大小
 
 ### 5、添加 npm 脚本命令
-
 
 ### 接下来
 
