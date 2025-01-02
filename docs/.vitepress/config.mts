@@ -42,6 +42,7 @@ const vitePressOptions = {
         darkModeSwitchTitle: "切换到深色模式",
         outline: {
             label: '页面导航',
+			level: [ 2,3],
         },
         // 文章翻页
         docFooter: {

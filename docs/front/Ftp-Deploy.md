@@ -4,6 +4,7 @@ tags:
   - Ftp
   - Deploy
 date: '2024-12-26 22:53:24'
+info: '使用 basic-ftp 部署前端项目'
 ---
 
 # 通过 Ftp 部署前端项目
@@ -30,7 +31,7 @@ date: '2024-12-26 22:53:24'
 
 使用 `basic-ftp` 来实现对服务器包的备份与新包的上传。
 
-## 实现打包
+## 具体实现
 
 ### 1、安装 `basic-ftp`
 
@@ -61,7 +62,7 @@ pnpm install basic-ftp --save -D
 ```js
 import {Client} from 'basic-ftp'
 
-// 测试 FTP
+// 测试 连接
 
 const test = async () => {
 	const client = new Client()
@@ -101,28 +102,81 @@ test()
     uniqueID: undefined
   }]
 ```
+
 若未能成功运行，先排查账号密码是否正确，是否开启 ftp 服务，若这些内容没有问题，更具报错结果进一步排查。
 
 ### 3、备份与上传文件
 
-**包备份**即将当前服务器上的包进行重命名,可以调用 `rename` 来完成
+**包备份**即将当前服务器上的包进行重命名,可以调用 `rename` 方法来完成文件夹重命名
 
 `Client. rename(srcPath: string, destPath: string): Promise<FTPResponse>`
 
-**上传包** 即将本地的文件夹上传到服务器
+- srcPath: string - 要重命名的文件路径
+- destPath: string - 重命名的目标文件路径
+
+**上传包** 即将本地的文件夹上传到服务器，可调用 `uploadFromDir` 方法完成文件夹上传
 
 `Client. uploadFromDir(localDirPath: string, remoteDirPath?: string): Promise<void>`
 
+- localDirPath: string - 本地文件夹路径
+- remoteDirPath?: string - 远程文件夹路径
+
+参考代码如下：运行后，会看到服务器上 dist 文件夹被重命名为 dist_backup，并且 dist 文件夹中的文件被上传到服务器上
+
+```js
+import {Client} from 'basic-ftp'
+
+// 文件备份与上传
+
+const test = async () => {
+	const client = new Client()
+	client.ftp.verbose = true  //所有套接字通信的调试级日志记录
+	try {
+		await client.access({
+			host: "******",
+			user: "******",
+			password: "******",
+			secure: true
+		})
+		await client.rename('dist', 'dist_baackup')  // 文件重命名
+		await client.uploadFromDir('../dist', 'dist') // 文件夹上传
+	} catch (err) {
+		console.log(err)
+	}
+	client.close()
+}
+
+test()
+
+```
+
 ### 4、添加打印信息与进度显示
 
-日志要打印的信息
+期望要输出的日志形式，如下所示：
 
-- 所有文件大小
-- 已上传的文件大小
-- 百分比
-- 上传结果
+- 开始部署
+- 连接 `ftp` 服务器 结果
+- 数据备份结果
+- 开始上传数据
+- 上传进度 loading 百分比 已上传的大小/总文件大小 正在上传的文件名
+- 结果
 
-获取当前目录里边所有文件大小
+```
+ Start deploying...
+ √  Successful connection to ftp server
+ √  Data Backup Successful
+ Start uploading data
+⠋  8.21 %    597.01 Kb/7.10 Mb Uploading... front_element-plus-question.md.BMIisrhK.lean.js
+
+```
+
+要完成了这种形式的打印需要解决以下问题：
+- 获取本地目录里边所有文件大小
+- 进度相关日志打印在同一行 
+- loading 动画
+- 给打印的结果使用颜色区分
+
+### 4.1 获取当前目录里边所有文件大小
 
 ```ts
 /**
@@ -131,55 +185,62 @@ test()
  * @returns {number} 返回目录的总大小（以字节为单位）
  */
 const getDirSize = (dirPath: string) => {
-        // 读取目录中的所有文件和子目录
-        const files = fs.readdirSync(dirPath)
-        let size = 0
-        files.forEach(file => {
-            const filePath = path.join(dirPath, file)
-            // 获取文件或子目录的元数据
-            const stat = fs.statSync(filePath)
-            if (stat.isFile()) {
-                size += stat.size
-            } else if (stat.isDirectory()) {
-                size += getDirSize(filePath)
-            }
-        })
-        return size
-    }
+		// 读取目录中的所有文件和子目录
+		const files = fs.readdirSync(dirPath)
+		let size = 0
+		files.forEach(file => {
+			const filePath = path.join(dirPath, file)
+			// 获取文件或子目录的元数据
+			const stat = fs.statSync(filePath)
+			if(stat.isFile()) {
+				size += stat.size
+			} else if(stat.isDirectory()) {
+				size += getDirSize(filePath)
+			}
+		})
+		return size
+	}
 
 ```
 
-获取已经上传的文件大小
+### 4.2 追踪上传进度
 
-`basic-ftp` 提供了 `trackProgress` 方法，该方法接受一个回调函数，该回调函数会在每次上传或下载时调用，并传入一个对象，该对象包含当前上传或下载的字节数、总字节数和百分比。
+`basic-ftp` 提供了 `trackProgress` 方法，该方法接受一个回调函数，该回调函数会在每次上传或下载时调用，并传入一个对象，该对象包含当前文件上传或下载的字节数、总字节数等信息。
 
-百分比可以通过已上传的文件大小和总文件大小计算得到。
+在开始上传文件之前，设置好回调来输出上传进度
 
-输出结果 可以统计用时，上传的文件数量，等信息
-
-当文件较多时，输出的日志会比较多，不美观，做一些优化
-
-- 进度等信息在同一行输出
-- 添加 loading
-- 给打印的结果使用颜色区分
-  要实现这些内容，需要用到 `progress.stdout`
-
-编写一个在同一行打印的函数，
+```js
+const size = getDirSize('../../dist')
+client.trackProgress(info => {
+	const progress = `${(100 * (info.bytesOverall / size)).toFixed(2)}`
+	console.log(`${progress} %    ${bytesToSize(info.bytesOverall)}/${sizeFormat} Uploading... ${info.name} `)
+})
+```
+### 4.3 将进度最终输出在同一行
+当文件较多时，关于进度输出的日志会比较多，不太美观，可以使用 `progress.stdout` 来因把进度信息放在在同一行输出
+为了便于使用，这里写了一个 简答的`log` 函数
 
 ```ts
 const log = (content: string) => {
-    process.stdout.clearLine(0);  // 清除当前行
-    process.stdout.cursorTo(0);   // 将光标移回到行首
-    process.stdout.write(content);  // 每次从最右侧输出
+	process.stdout.clearLine(0);  // 清除当前行
+	process.stdout.cursorTo(0);   // 将光标移回到行首
+	process.stdout.write(content);  // 每次从最右侧输出
 }
 ```
 
-参考网上的一些资料,如`cli-spinners`，loading 可以使用 一些特殊的字符来完成，每次打印时，切换为下一个字符，
 
+### 4.4 对打印结果进行美化
+
+- 上传添加 loading 动画	
+
+参考网上的一些资料，如`cli-spinners`，可以循环打印一些字符，来实一个简单的 loading 效果
 ```ts
 const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
 ```
 
+- 给打印结果添加颜色
+
+需要对打印的结果添加颜色，如成功的相关内容打印绿色，失败的打印红色
 要使 打印的结果颜色不同，可以使用 ANSI 转义码来设置控制台输出的文字颜色，详细内容可以参考
 > [使用 ANSI 转义码随心所欲地操纵你的终端(改变输出文字颜色、彩虹渐变色、高亮、加粗、移动光标、隐藏光标等)](https://blog.csdn.net/Blaze_dL/article/details/142767515)
 
@@ -207,22 +268,10 @@ console.log('\x1B[33m \x1B[44m 背景蓝色文字黄色 \x1B[36m \x1B[41m 背景
 
 **输出:**
 ![打印结果](../public/log-with-color.png)
-添加回调
 
-记录文件个数
+## 添加 npm 脚本命令
 
-格式化输出
-开始上传
-loading 百分比 共 已上传 当前处理的文件
-上传结束
-
-结果 成功上传 多少个文件，失败多少个
-
-获取本地文件加大小
-
-### 5、添加 npm 脚本命令
-
-### 接下来
+## 接下来
 
 - 制作成 vite 插件 发布在 npm
 - 打包，直接执行 js 文件
@@ -230,3 +279,6 @@ loading 百分比 共 已上传 当前处理的文件
 编写 `vite` 的插件，通过 `vite` 的钩子，在打包完成后，执行上述的步骤。(不建议) 有时打包不需要上传
 建议配置一个单独的启动脚本，来完成打包并部署
 
+## 完整代码
+
+<<< ../.vitepress/utils/FtpDeploy.ts

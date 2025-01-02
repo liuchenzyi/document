@@ -5,8 +5,9 @@ import path from 'path'
 // 测试 FTP
 const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
 
+let count = 0
+
 const getFrame = () => {
-    let count = 0
     return frames[count++ % frames.length]
 }
 
@@ -92,7 +93,8 @@ class FtpDeploy {
     getBackupPath(): string {
         if (!this.backupPath) {
             const date = new Date()
-            return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}@${date.getHours()}:${date.getMinutes()}-${date.getSeconds()}`
+			// 获取当前时间，作为默认备份路径，使用原生Date 对象，不使用第三方库
+            return `${date.getFullYear()}-${date.getMonth()}-${(date.getDate()+1)}@${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`
         }
 
         if (this.backupPath instanceof Function) {
@@ -102,9 +104,7 @@ class FtpDeploy {
     }
 
     async backup() {
-        // 判断文件夹是否存在
 
-        // 获取当前时间，作为默认备份路径，使用原生Date 对象，不使用第三方库
         try {
             await this.client.rename(this.remoteDirPath, this.getBackupPath())
             console.log('\x1B[32m √  Data Backup Successful \x1B[0m')
@@ -123,7 +123,7 @@ class FtpDeploy {
             const progress = `${(100 * (info.bytesOverall / size)).toFixed(2)}`
             log(`${getFrame()}  ${progress} %    ${bytesToSize(info.bytesOverall)}/${sizeFormat} Uploading... ${info.name} `)
         })
-        console.log('\x1B[32m √  Start uploading data \x1B[0m')
+        console.log('\x1B[32m Start uploading data \x1B[0m')
         await this.client.uploadFromDir(this.localDirPath, this.remoteDirPath)
 
 
@@ -132,7 +132,7 @@ class FtpDeploy {
 
     // 部署
     async deploy() {
-        console.log('Start deploying...')
+        console.log('\x1B[32m Start deploying... \x1B[0m')
 
         try {
             await this.assess()
