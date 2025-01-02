@@ -9,24 +9,28 @@ date: '2024-12-26 22:53:24'
 # 通过 Ftp 部署前端项目
 
 在进行前端项目部署时，通常是自己打包，然后将打包好的文件发送给后端的同事，然后由后端将文件部署到服务器上。
-但是这样部署的方式感觉比较麻烦，所以就想通过 ftp 部署前端项目。
+但是这样部署的方式感觉比较麻烦，所以就想尝试通过 ftp 部署前端项目。
 
 ## 前提条件
 
 服务器开启了 ftp 服务，且具有操作文件的权限。
 这里使用的是 window server 操作系统，可以通过 IIS 来开启 ftp 服务
-具体操着步骤参考 [Windows Server 2019 搭建FTP站点](https://www.cnblogs.com/wencg/p/13450938.html)
+具体操着步骤可以参考 [Windows Server 2019 搭建FTP站点](https://www.cnblogs.com/wencg/p/13450938.html)
 
 ::: danger 注意
-为了安全起见，一定要设置密码
+为了安全起见，设置好Ftp 服务器的密码
 :::
 
-先整理一下我们部署的操作步骤：
+## 思路
+
+先梳理一下我们部署的操作步骤：
 
 1. 对服务器上当前的包进行备份
 2. 将本地打包好的文件上传到服务器上
 
-## 步骤
+使用 `basic-ftp` 来实现对服务器包的备份与新包的上传。
+
+## 实现打包
 
 ### 1、安装 `basic-ftp`
 
@@ -51,6 +55,8 @@ pnpm install basic-ftp --save -D
 ### 2、测试 ftp 连接
 
 直接打开window 资源管理器，直接输入 `ftp://ip:端口号`，查看是否可以正常连接，若可以正常连接会看到 服务器对应目录下的文件
+
+使用 `basic-ftp` 来连接 `ftp` 服务器,具体代码如下
 
 ```js
 import {Client} from 'basic-ftp'
@@ -78,13 +84,34 @@ const test = async () => {
 test()
 ```
 
+运行成功后会输出 ftp 服务器上的文件列表，如下所示
+
+```
+ [ FileInfo {
+    name: '.pnpm-store',
+    type: 2,
+    size: 0,
+    rawModifiedAt: '07-23-24 04:38PM',
+    modifiedAt: undefined,
+    permissions: undefined,
+    hardLinkCount: undefined,
+    link: undefined,
+    group: undefined,
+    user: undefined,
+    uniqueID: undefined
+  }]
+```
+若未能成功运行，先排查账号密码是否正确，是否开启 ftp 服务，若这些内容没有问题，更具报错结果进一步排查。
+
 ### 3、备份与上传文件
 
-**包备份**及将当前服务器上的包进行重命名
+**包备份**即将当前服务器上的包进行重命名,可以调用 `rename` 来完成
 
-备份包的名称规则一般为 日期-版本号 支持回调函数，package.json 的版本号
+`Client. rename(srcPath: string, destPath: string): Promise<FTPResponse>`
 
-**上传包**
+**上传包** 即将本地的文件夹上传到服务器
+
+`Client. uploadFromDir(localDirPath: string, remoteDirPath?: string): Promise<void>`
 
 ### 4、添加打印信息与进度显示
 
@@ -171,11 +198,13 @@ const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '
 | 重置  | 重置  |      \x1B[0m      |
 
 具体使用方法 在要打印的文本前面加上对应的颜色代码，例如：
+
 ```js
-console.log('\x1B[31m 红色  \x1B[32m 绿色 \x1B[33m 黄色 \x1B[34m蓝色 \x1B[35m 紫色 \x1B[36m 青色 \x1B[37m 白色' )
-console.log('\x1B[41m 红色  \x1B[42m 绿色 \x1B[43m 黄色 \x1B[44m蓝色 \x1B[45m 紫色 \x1B[46m 青色 \x1B[47m 白色' )
+console.log('\x1B[31m 红色  \x1B[32m 绿色 \x1B[33m 黄色 \x1B[34m蓝色 \x1B[35m 紫色 \x1B[36m 青色 \x1B[37m 白色')
+console.log('\x1B[41m 红色  \x1B[42m 绿色 \x1B[43m 黄色 \x1B[44m蓝色 \x1B[45m 紫色 \x1B[46m 青色 \x1B[47m 白色')
 console.log('\x1B[33m \x1B[44m 背景蓝色文字黄色 \x1B[36m \x1B[41m 背景红色文字青色')
 ```
+
 **输出:**
 ![打印结果](../public/log-with-color.png)
 添加回调
@@ -195,10 +224,9 @@ loading 百分比 共 已上传 当前处理的文件
 
 ### 接下来
 
+- 制作成 vite 插件 发布在 npm
+- 打包，直接执行 js 文件
+
 编写 `vite` 的插件，通过 `vite` 的钩子，在打包完成后，执行上述的步骤。(不建议) 有时打包不需要上传
 建议配置一个单独的启动脚本，来完成打包并部署
 
-支持 `ssh2` 使用ssh 部署
-
-[前端自动化部署之ssh2和ssh2-sftp-client](https://blog.csdn.net/cuijiying/article/details/144568558)
-[ssh2-sftp-client实现前端项目自动部署](https://blog.csdn.net/qq_63358859/article/details/133880096)

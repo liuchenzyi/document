@@ -106,7 +106,7 @@ class FtpDeploy {
 
         // 获取当前时间，作为默认备份路径，使用原生Date 对象，不使用第三方库
         try {
-            const result = await this.client.rename(this.remoteDirPath, this.getBackupPath())
+            await this.client.rename(this.remoteDirPath, this.getBackupPath())
             console.log('\x1B[32m √  Data Backup Successful \x1B[0m')
         } catch (e) {
             console.log('\x1B[31m ! Data backup failed \x1B[0m')
@@ -160,7 +160,7 @@ class FtpDeploy {
 /**
  * 递归计算目录的总大小
  * @param dirPath 目录路径 - 指定要计算大小的目录
- * @returns {number} 返回目录的总大小（以字节为单位）
+ * @returns  返回目录的总大小（以字节为单位）
  */
 const getDirSize = (dirPath: string) => {
     // 读取目录中的所有文件和子目录
