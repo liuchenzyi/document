@@ -9,7 +9,7 @@ import { data as posts } from './posts.data.ts'
 const router = useRouter()
 
 const jump = (path: string) => {
-	router.go(`dist${ path }`)
+	router.go(path)
 }
 </script>
 
