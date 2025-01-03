@@ -14,7 +14,7 @@ info: '记录 element-plus 使用过程中的一些问题'
 **问题描述**：在使用 element-plus 的 选择器组件 (`el-select`)  组件时，当绑定的值是空字符串时，发现 placeholder 不显示，为
 `null` 会正常显示。
 
-![el-select 组件 placeholder 不显示](../public/select-1.png)
+![el-select 组件 placeholder 不显示](../asset/images/select-1.png)
 
 ```vue
 
@@ -49,7 +49,7 @@ info: '记录 element-plus 使用过程中的一些问题'
 查阅源代码，关键代码如下
 查看源码：[el-select 组件源码](https://github.com/element-plus/element-plus/tree/dev/packages/components/select)
 
-![el-select 组件源码](../public/select-2.png)
+![el-select 组件源码](../asset/images/select-2.png)
 
 ```ts
 const hasModelValue = computed(() => {
@@ -96,6 +96,6 @@ const isEmptyValue = (value: any) => {
 ```
 修改为`:empyty-values="['', null, undefined]` 可以正常显示
 
-![el-select 正常显示](../public/select-3.png)
+![el-select 正常显示](../asset/images/select-3.png)
 
 **结论**：因为全局配置了`:empty-values="[undefined, null]"`，`Select`当绑定的值是空字符串时，判断绑定的值不为空，所以`placeholder`不显示。

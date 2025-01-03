@@ -15,12 +15,8 @@ const vitePressOptions = {
         // https://vitepress.dev/reference/default-theme-config
         nav: [
             {text: '首页', link: '/'},
-            {text: '网站收藏', link: '/website.html'},
             {text: '前端', link: '/front/'},
-            {text: 'gitea', link: '/gitea/'},
-            {text: '测试', link: '/test/'},
-            {text: '博客搭建', link: '/vite-press/'},
-            {text: 'Examples', link: '/examples/'}
+            {text: '博客搭建', link: '/vite-press/'}
         ],
         sidebar: [],
 
@@ -42,7 +38,7 @@ const vitePressOptions = {
         darkModeSwitchTitle: "切换到深色模式",
         outline: {
             label: '页面导航',
-			level: [ 2,3],
+            level: [2, 3],
         },
         // 文章翻页
         docFooter: {
@@ -81,14 +77,14 @@ const vitePressOptions = {
             HeaderPlugin(),
         ],
 
-		// 设置scss的api类型为modern-compiler
-		css: {
-			preprocessorOptions: {
-				scss: {
-					api: 'modern-compiler'
-				}
-			}
-		},
+        // 设置scss的api类型为modern-compiler
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler'
+                }
+            }
+        },
 
         build: {
             target: 'esnext'
@@ -110,42 +106,6 @@ const vitePressSidebarOptions = [
         documentRootPath: '/docs',
         scanStartPath: "front",
         resolvePath: "/front/",
-        collapsed: true,
-        debugPrint: false,
-        useTitleFromFrontmatter: true,  //
-        excludeFilesByFrontmatterFieldName: "exclude",
-        useFolderLinkFromIndexFile: true,
-        collapseDepth: 1,
-        useFolderTitleFromIndexFile: true
-    },
-    {
-        documentRootPath: '/docs',
-        scanStartPath: "gitea",
-        resolvePath: "/gitea/",
-        collapsed: true,
-        debugPrint: false,
-        useTitleFromFrontmatter: true,  //
-        excludeFilesByFrontmatterFieldName: "exclude",
-        useFolderLinkFromIndexFile: true,
-        collapseDepth: 1,
-        useFolderTitleFromIndexFile: true
-    },
-    {
-        documentRootPath: '/docs',
-        scanStartPath: "examples",
-        resolvePath: "/examples/",
-        collapsed: true,
-        debugPrint: false,
-        useTitleFromFrontmatter: true,  //
-        excludeFilesByFrontmatterFieldName: "exclude",
-        useFolderLinkFromIndexFile: true,
-        collapseDepth: 1,
-        useFolderTitleFromIndexFile: true
-    },
-    {
-        documentRootPath: '/docs',
-        scanStartPath: "test",
-        resolvePath: "/test/",
         collapsed: true,
         debugPrint: false,
         useTitleFromFrontmatter: true,  //

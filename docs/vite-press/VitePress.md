@@ -118,7 +118,7 @@ pnpm docs:dev
 
 :::
 
-![运行效果](/img.png)
+![运行效果](../asset/images/img.png)
 
 ## 3. 结构
 

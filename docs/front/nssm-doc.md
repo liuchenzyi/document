@@ -44,7 +44,7 @@ sc delete servername # windows删除服务命令
 
 最后点击install service 完成windows服务安装，在windows服务列表就能看到创建的服务了。
 
-![nssm-1.png](../public/nssm-1.png)
+![nssm-1.png](../asset/images/nssm-1.png)
 
 :::details 参考链接
 

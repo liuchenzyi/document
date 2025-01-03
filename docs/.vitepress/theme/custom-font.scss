@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'customFont';
+  src: url('../../assets/LXGWWenKai-Regular.ttf') format('truetype');
+  // 替换成你自己的字体文件
+}
+
+:root {
+  --vp-sidebar-width: 300px;
+  --vp-font-family-base: "customFont"
+}

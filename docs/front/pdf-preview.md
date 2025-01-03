@@ -62,13 +62,13 @@ PDF.js 是一个由 Mozilla 开发的 JavaScript 库，用于在 Web 上显示 P
 
 ```
 
-![pdf-preview](../public/pdfjs-preview.png)
+![pdf-preview](../asset/images/pdfjs-preview.png)
 
 
 ## 跨域问题
 将测试的 pdf 文件放在服务器上，通过浏览器可以访问到，在 iframe 中加载 pdf 文件，会报错：
 
-![pdf-erorr](../public/pdfjs-error.png)
+![pdf-erorr](../asset/images/pdfjs-error.png)
 
 会有跨域的问题，需要对源码进行修改, 将`web/viewer.js` 文件中 如下代码注释掉
 
@@ -79,7 +79,7 @@ if (fileOrigin !== viewerOrigin) {
 ```
 如下图所示：
 
-![pdf-preview](../public/pdfjs-source.png)
+![pdf-preview](../asset/images/pdfjs-source.png)
 
 可以正常查看 pdf 文件
 

@@ -61,9 +61,7 @@ pnpm install basic-ftp --save -D
 
 ```js
 import {Client} from 'basic-ftp'
-
 // 测试 连接
-
 const test = async () => {
 	const client = new Client()
 	client.ftp.verbose = true  //所有套接字通信的调试级日志记录
@@ -125,9 +123,7 @@ test()
 
 ```js
 import {Client} from 'basic-ftp'
-
 // 文件备份与上传
-
 const test = async () => {
 	const client = new Client()
 	client.ftp.verbose = true  //所有套接字通信的调试级日志记录
@@ -259,7 +255,7 @@ const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '
 | 重置  | 重置  |      \x1B[0m      |
 
 具体使用方法 在要打印的文本前面加上对应的颜色代码，例如：
-
+**输入:**
 ```js
 console.log('\x1B[31m 红色  \x1B[32m 绿色 \x1B[33m 黄色 \x1B[34m蓝色 \x1B[35m 紫色 \x1B[36m 青色 \x1B[37m 白色')
 console.log('\x1B[41m 红色  \x1B[42m 绿色 \x1B[43m 黄色 \x1B[44m蓝色 \x1B[45m 紫色 \x1B[46m 青色 \x1B[47m 白色')
@@ -267,9 +263,9 @@ console.log('\x1B[33m \x1B[44m 背景蓝色文字黄色 \x1B[36m \x1B[41m 背景
 ```
 
 **输出:**
-![打印结果](../public/log-with-color.png)
+![打印结果](../asset/images/log-with-color.png)
 
-## 添加 npm 脚本命令
+
 
 ## 接下来
 
