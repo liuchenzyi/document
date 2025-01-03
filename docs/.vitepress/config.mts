@@ -9,7 +9,7 @@ const vitePressOptions = {
     description: "A VitePress Site",
     // lang: 'zh_CN',
     lastUpdated: true, // 是否显示最后更新时间
-    base: '/dist/',
+    // base: '/dist/',
 
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
@@ -96,7 +96,7 @@ const vitePressOptions = {
             https: false,
         },
     },
-    outDir: "./dist",
+    outDir: "../dist",
 }
 
 
