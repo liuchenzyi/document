@@ -8,7 +8,7 @@ export default createContentLoader(
 	/* options */
 	{
 		render: false,
-		excerpt: true,
+		excerpt: false,
 		transform(rawData) {
 			// console.log(rawData.length)
 			return rawData
