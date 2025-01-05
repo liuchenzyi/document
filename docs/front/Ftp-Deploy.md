@@ -4,7 +4,8 @@ tags:
   - Ftp
   - Deploy
 date: '2024-12-26 22:53:24'
-info: '使用 basic-ftp 部署前端项目'
+description: '使用 basic-ftp 部署前端项目'
+category: "front"
 ---
 
 # 通过 Ftp 部署前端项目

@@ -1,6 +1,8 @@
 ---
 date: '2024-12-01 14:51:20'
 title: VitePress 基本使用
+description: vitepress 博客搭建
+category: "vite-press"
 tags:
   - vitepress
 ---

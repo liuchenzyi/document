@@ -1,5 +1,7 @@
 ---
 title: 自动生成侧边栏
+description: 使用 vitepress-sidebar 自动生成侧边栏
+category: "vite-press"
 tags:
   - vitepress
   - vitepress-sidebar

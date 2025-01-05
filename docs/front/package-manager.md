@@ -6,6 +6,8 @@ tags:
   - yarn
   - pnpm
 date: '2024-12-06 18:50:39'
+description: 记录 一些 node 包管理器的常用操作命令
+category: "front"
 ---
 
 # npm、yarn、pnpm 常用操作

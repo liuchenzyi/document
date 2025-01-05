@@ -3,7 +3,8 @@ title: Cesium 实现场景漫游
 tags:
   - Cesium
 date: '2024-12-21 22:29:52'
-info: 在 Cesium 中实现场景漫游
+description: 在 Cesium 中实现场景漫游
+category: "front"
 ---
 
 # Cesium

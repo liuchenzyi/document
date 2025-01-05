@@ -1,21 +1,39 @@
 <script lang="ts" setup>
-import { NTimeline, NTimelineItem, NIcon, NBackTop, NTag, NCard,NEllipsis } from 'naive-ui'
+import { NTimeline, NTimelineItem, NIcon, NBackTop, NTag, NCard, NEllipsis, NTabs,NTab,NEmpty } from 'naive-ui'
 import { useRouter } from 'vitepress'
 import dayjs from 'dayjs'
-import { EmailOutlined, DiscountOutlined } from '@vicons/material'
+import {  DiscountOutlined } from '@vicons/material'
+import { computed, ref, toRaw } from 'vue'
 // @ts-ignore
-import { data as posts } from './posts.data.ts'
+import { data  } from './posts.data.ts'
 
 const router = useRouter()
 
 const jump = (path: string) => {
 	router.go(path)
 }
+
+const tab = ref('all')
+
+const posts = computed(() => {
+	if(tab.value === 'all'){
+		return data
+	}else{
+		return data.filter(item => item.frontmatter.category === tab.value)
+	}
+
+})
 </script>
 
 <template>
 	<section class="article-list">
-		<n-timeline size="large">
+		<n-tabs v-model:value="tab" type="bar" size="large" style="margin-bottom: 20px">
+			<n-tab name="all" tab="所有"></n-tab>
+			<n-tab name="front" tab="前端"></n-tab>
+			<n-tab name="backend" tab="后端"></n-tab>
+			<n-tab name="vite-press" tab="vite-press"></n-tab>
+		</n-tabs>
+		<n-timeline size="large" v-if="posts.length >0">
 			<n-timeline-item v-for="item in posts" :time="dayjs(item.frontmatter.date).format('YYYY-MM-DD')"
 							 line-type="dashed">
 				<template #default>
@@ -29,12 +47,18 @@ const jump = (path: string) => {
 							</n-tag>
 						</div>
 						<n-ellipsis :line-clamp="1">
-							{{ item.frontmatter.info ?? '无简介' }}
+							{{ item.frontmatter.description ?? '无简介' }}
 						</n-ellipsis>
 					</n-card>
 				</template>
 			</n-timeline-item>
+
+
 		</n-timeline>
+
+		<n-empty description="该分类暂无数据" v-else>
+
+		</n-empty>
 	</section>
 	<n-back-top :right="10"/>
 </template>

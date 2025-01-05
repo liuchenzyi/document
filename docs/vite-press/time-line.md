@@ -4,7 +4,8 @@ tags:
   - vitepress
   - Naive-UI
   - Time-Line
-info:   自定义首页，使用时间轴展示文档
+description: 自定义首页
+category: "vite-press"
 date: '2024-12-14 21:26:46'
 ---
 

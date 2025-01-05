@@ -1,7 +1,8 @@
 ---
 title: 自动添加文件发布时间
 date: '2024-12-10 23:25:02'
-info: 自动给文档添加发布时间
+description: 自动给文档添加发布时间
+category: "vite-press"
 tags:
   - Git
   - javascript

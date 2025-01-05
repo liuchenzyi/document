@@ -4,8 +4,9 @@ tags:
   - Cloudflare
   - GitHub
   - vitepress
-info: 将博客部署到 Cloudflare
+description: 记录如何将博客部署到 Cloudflare
 date: '2024-12-15 10:44:43'
+category: "vite-press"
 ---
 
 # 将博客部署到 Cloudflare

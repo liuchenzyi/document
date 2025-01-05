@@ -4,7 +4,8 @@ tags:
   - element-plus
   - vue
 date: '2024-12-18 22:06:23'
-info: '记录 element-plus 使用过程中的一些问题'
+description: '记录 element-plus 使用过程中的一些问题'
+category: "front"
 ---
 
 # element-plus 问题记录

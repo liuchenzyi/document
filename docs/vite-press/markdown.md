@@ -1,5 +1,7 @@
 ---
 title: Markdown 语法样例
+description: 常用的 Markdown 语法样例，便于写作时参考
+category: "vite-press"
 tags:
   - markdown
   - markdown-it

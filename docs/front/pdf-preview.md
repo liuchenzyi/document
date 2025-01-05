@@ -4,7 +4,9 @@ tags:
   - pdf
   - pdf.js
 date: '2024-12-17 23:04:35'
-info: pdf 文件预览
+info: 
+description: 使用 pdfjs 预览 pdf 文件
+category: "front"
 ---
 
 # 使用 pdf.js 预览 pdf 文件

@@ -1,5 +1,7 @@
 ---
 title: 图像查看
+description: 给文档添加图像查看功能
+category: "vite-press"
 tags:
   - viewerjs
   - vitepress
