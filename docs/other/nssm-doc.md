@@ -3,7 +3,6 @@ title: windows-nssm 使用
 date: 2024-12-09 23:04:42
 tags: [windows, nssm]
 description: 简单介绍 windows守护进程工具--nssm 的使用
-category: "front"
 ---
 # windows守护进程工具--nssm详解
 NSSM(the Non-Sucking Service Manager)是Windows环境下一款免安装的服务管理软件，它可以将应用封装成服务，即将普通exe程序或者jar包应用,封装成服务使之像windows服务可以设置自动启动等。并且可以监控程序运行状态，程序异常中断后自动启动，实现守护进程的功能。
