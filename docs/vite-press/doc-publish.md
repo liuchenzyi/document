@@ -6,6 +6,8 @@ category: "vite-press"
 tags:
   - Git
   - javascript
+  - Node
+
 ---
 # 自动添加文件发布时间
 
@@ -32,7 +34,9 @@ tags:
 
 ## 添加文件发布时间
 
-使用 `gary-matter`的`stringify`方法添加到元数据中。
+使用 `gary-matter`的`stringify`方法将其转化为字符串写会源文件
+
+<<< ../.vitepress/utils/getPublishTime.ts
 
 
 
