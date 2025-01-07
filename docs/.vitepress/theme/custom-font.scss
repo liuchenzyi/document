@@ -1,10 +1,8 @@
 @font-face {
-  font-family: 'customFont';
-  src: url('../../assets/LXGWWenKai-Regular.ttf') format('truetype');
-  // 替换成你自己的字体文件
+  font-family: 'LXGW-WenKai';
+  src: url('./LXGWWenKai-Regular.ttf') format('truetype');
 }
 
 :root {
-  --vp-sidebar-width: 300px;
-  --vp-font-family-base: "customFont"
+  --vp-font-family-base: "LXGW-WenKai";
 }
