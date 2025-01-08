@@ -47,14 +47,12 @@ const writeToFile = (filePath: string, content: string) => {
 const getFirstCommitTime =  (filePath: string) => {
 	try {
 		const date = execSync(
-			`git log --follow --format=%ad -- ${ filePath }`,
+			`git log --reverse --format=%ai -- ${ filePath }`,
 			{
 				encoding: 'utf8'
 			}
 		)
-			.split('\n')
-			.filter(line => line.trim())
-			.pop();
+			.split('\n')[0].trim()
 
 		if(date) {
 			return dayjs(date).format('YYYY-MM-DD HH:mm:ss')
