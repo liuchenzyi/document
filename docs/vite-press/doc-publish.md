@@ -61,7 +61,16 @@ git log  --reverse --format=%ai   -- .\docs\front\index.md
 
 ### 使用 node 来执行上述操作
 
-可以使用 `child_process` 来执行命令
+我们可以使用 `child_process` 来执行命令
+
+`child_process` 是 Node.js 的一个内置模块，用于创建和管理子进程。通过这个模块，可以在 Node.js 应用中执行外部命令、与子进程通信等。
+
+child_process 模块的主要功能：
+- 执行系统命令：可以运行操作系统级别的命令，并获取输出结果。
+- 创建子进程：可以启动新的进程来执行特定任务，比如运行另一个 JavaScript 文件或任何其他可执行文件。
+- 进程间通信：支持父进程与子进程之间的消息传递。
+- 资源隔离：子进程独立于父进程运行，即使子进程崩溃也不会影响父进程。
+
 ```ts
 import { execSync } from 'child_process';
 const result = execSync(
