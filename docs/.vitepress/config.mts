@@ -2,6 +2,7 @@ import {defineConfig} from 'vitepress'
 import {withSidebar} from 'vitepress-sidebar';
 import {pagefindPlugin} from 'vitepress-plugin-pagefind'
 import {HeaderPlugin} from "./plugins/headerPlugin";
+import { TrafficStatisticsPlugin } from "./plugins/TrafficStatisticsPlugin";
 
 // https://vitepress.dev/reference/site-config
 const vitePressOptions = {
@@ -75,6 +76,7 @@ const vitePressOptions = {
                 },
             }),
             HeaderPlugin(),
+			TrafficStatisticsPlugin()
         ],
 
         // 设置scss的api类型为modern-compiler

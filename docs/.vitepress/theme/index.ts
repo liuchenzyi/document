@@ -13,6 +13,7 @@ import { defineComponent, h, onMounted } from 'vue'
 const { Layout } = DefaultTheme
 // @ts-ignore
 import ArticleHeader from '../components/ArticleHeader.vue'
+import TrafficStatistics from '../components/TrafficStatistics.vue'
 
 import { darkTheme } from 'naive-ui'
 // import './custom-font.scss'
@@ -43,6 +44,7 @@ export default {
 		// 注册全局组件，如果你不想使用也可以不添加
 		// ctx.app.component('vImageViewer', vImageViewer);
 		ctx.app.component('ArticleHeader', ArticleHeader);
+		ctx.app.component('TrafficStatistics', TrafficStatistics);
 
 		if (import.meta.env.SSR) {
 			const { collect } = setup(ctx.app)
