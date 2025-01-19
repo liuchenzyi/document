@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import {  ref,onMounted } from 'vue'
-import { NStatistic} from 'naive-ui'
-
-
+import {  ref,onMounted,inject } from 'vue'
+import { NStatistic } from 'naive-ui'
+const url = inject('ver-count-url')
 onMounted(async ()=>{
+	console.log(url,import.meta)
 	const baseUrl = 'https://events.vercount.one';
 	const apiUrl = `${baseUrl}/log?jsonpCallback=VisitorCountCallback`;
 	try {
-
 		const response = await fetch(apiUrl, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ url: window.location.href }),
+			body: JSON.stringify({
+				url: `${url}${window.location.pathname}`
+			}),
 		});
 		const data = await response.json();
 		const { site_uv, site_pv, page_pv } = data;
@@ -25,7 +26,10 @@ onMounted(async ()=>{
 	} catch (error) {
 		console.error("Error fetching visitor count:", error);
 	}
+
 })
+
+
 
 const statistics = ref({
 	site_uv: 0,
@@ -37,12 +41,9 @@ const statistics = ref({
 <template>
 	<div class="statistic">
 		<n-statistic label="本文总阅读量" :value="statistics.page_pv" />
-
 		<n-statistic label="本站总访问量" :value="statistics.site_pv" />
-
 		<n-statistic label="本站总访客数" :value="statistics.site_uv" />
 	</div>
-
 </template>
 
 <style scoped lang="scss">
@@ -52,6 +53,6 @@ const statistics = ref({
 
 	border-top: 1px solid var(--vp-c-divider);
 	padding-top: 24px;
-
 }
 </style>
+

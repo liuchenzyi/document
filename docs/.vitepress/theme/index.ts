@@ -40,7 +40,6 @@ export default {
 	Layout: NaiveUIProvider,
     enhanceApp(ctx:EnhanceAppContext) {
         DefaultTheme.enhanceApp(ctx);
-
 		// 注册全局组件，如果你不想使用也可以不添加
 		// ctx.app.component('vImageViewer', vImageViewer);
 		ctx.app.component('ArticleHeader', ArticleHeader);
@@ -50,6 +49,8 @@ export default {
 			const { collect } = setup(ctx.app)
 			ctx.app.provide('css-render-collect', collect)
 		}
+
+		ctx.app.provide('ver-count-url', import.meta.env.SSR? 'https://liuchennan.github.ssr' : 'https://liuchennan.github.dev')
 	},
 	setup() {
 		// 获取路由
