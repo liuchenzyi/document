@@ -5,18 +5,21 @@ export function TrafficStatisticsPlugin(): Plugin {
 	return {
 		name: 'statistics-plugin',
 		enforce: 'pre',
-		async transform(code: string, id: string) {
-			if(!id.match(/\.md\b/)) return null
-			// 文件名为 index 的文档不统计
-			if(id.endsWith('index.md')) return code
+		async transform(code: string, id: string, options) {
+			if(!id.match(/\.md\b/)) return code
 
-			const result = matter(code)
+			if(options.ssr && !id.endsWith('index.md')) {
 
-			const {data} = result
-			const {statistic = true} = data
+				const result = matter(code)
 
-			if(statistic) {
-				return `${code} \n\n <traffic-statistics />`
+				const {data} = result
+				const {statistic = true} = data
+
+				if(statistic) {
+					return `${ code } \n\n <traffic-statistics />`
+				} else {
+					return code
+				}
 			} else {
 				return code
 			}
