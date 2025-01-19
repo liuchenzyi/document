@@ -32,6 +32,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # 指定 pnpm 版本，可以根据需要调整
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
