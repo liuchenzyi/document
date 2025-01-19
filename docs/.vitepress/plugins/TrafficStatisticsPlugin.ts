@@ -7,8 +7,7 @@ export function TrafficStatisticsPlugin(): Plugin {
 		enforce: 'pre',
 		async transform(code: string, id: string, options) {
 			if(!id.match(/\.md\b/)) return code
-
-			if(options.ssr && !id.endsWith('index.md')) {
+			if(!id.endsWith('index.md')) {
 
 				const result = matter(code)
 
@@ -20,9 +19,8 @@ export function TrafficStatisticsPlugin(): Plugin {
 				} else {
 					return code
 				}
-			} else {
-				return code
 			}
+			return code
 		}
 	}
 }
