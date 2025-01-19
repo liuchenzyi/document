@@ -42,7 +42,7 @@ yarn add vitepress-plugin-image-viewer
 
 - `.vitepress/theme/index.ts` 文件
 
-  ```ts{2-3,12,22-23}
+  ```ts{2-3,22}
   // ...
   import 'viewerjs/dist/viewer.min.css'
   import imageViewer from 'vitepress-plugin-image-viewer'
