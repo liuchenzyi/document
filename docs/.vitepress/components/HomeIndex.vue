@@ -10,7 +10,7 @@ import { data } from './posts.data.ts'
 const router = useRouter()
 
 const jump = (path: string) => {
-	router.go(path)
+	router.go(`document/${path}`)
 }
 
 const tab = ref('all')
