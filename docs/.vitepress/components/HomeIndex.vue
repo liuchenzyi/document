@@ -72,11 +72,9 @@ const posts = computed(() => {
 
 	min-width: 300px;
 
-
 	:deep(.n-timeline-item-content__content) {
 		cursor: pointer;
 	}
-
 
 	.tags {
 		width: 100%;
@@ -85,7 +83,6 @@ const posts = computed(() => {
 		gap: 10px;
 
 		margin: 0 0 10px 0;
-
 	}
 }
 </style>

@@ -82,7 +82,7 @@ const isEmptyValue = (value: any) => {
 2. 在单选模式下，`hasModelValue` 由`isEmptyValue`计算得来;
 3. `isEmptyValue`的值为`props.emptyValues || config.value.emptyValues || DEFAULT_EMPTY_VALUES`
 
-[查阅Api文档](https://element-plus.org/zh-CN/component/select.html#select-api)
+> [element-plus select 组件 Api文档](https://element-plus.org/zh-CN/component/select.html#select-api)
 
 尝试组件传递`:empyty-values="['', null, undefined]`可以正常显示`placeholder`
 
@@ -99,4 +99,4 @@ const isEmptyValue = (value: any) => {
 
 ![el-select 正常显示](../asset/images/select-3.png)
 
-**结论**：因为全局配置了`:empty-values="[undefined, null]"`，`Select`当绑定的值是空字符串时，判断绑定的值不为空，所以`placeholder`不显示。
+**结论**：因为在 `el-config-provider` 组件上配置了 `:empty-values="[undefined, null]"`，所以当 `Select` 组件绑定的值是空字符串时，判断绑定的值不为空，所以`placeholder`不显示。

@@ -16,7 +16,7 @@ import ArticleHeader from '../components/ArticleHeader.vue'
 import TrafficStatistics from '../components/TrafficStatistics.vue'
 
 import { darkTheme } from 'naive-ui'
-// import './custom-font.scss'
+import './style.scss'
 
 
 const NaiveUIProvider = defineComponent({
