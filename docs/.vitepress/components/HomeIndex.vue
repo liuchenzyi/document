@@ -10,7 +10,7 @@ import { data } from './posts.data.ts'
 const router = useRouter()
 
 const jump = (path: string) => {
-	router.go(`document/${path}`)
+	router.go(`document${path}`)
 }
 
 const tab = ref('all')
@@ -57,9 +57,7 @@ const posts = computed(() => {
 			</n-timeline-item>
 		</n-timeline>
 
-		<n-empty v-else description="该分类暂无数据">
-
-		</n-empty>
+		<n-empty v-else description="该分类暂无数据"></n-empty>
 	</section>
 	<n-back-top :right="10"/>
 </template>

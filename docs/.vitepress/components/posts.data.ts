@@ -2,7 +2,6 @@
 import dayjs from 'dayjs'
 import { createContentLoader } from 'vitepress'
 
-
 export default createContentLoader(
 	['**/*.md', '!**/index.md'],
 	/* options */
@@ -10,7 +9,6 @@ export default createContentLoader(
 		render: false,
 		excerpt: false,
 		transform(rawData) {
-			// console.log(rawData.length)
 			return rawData
 				.filter(item => item.url.includes('.html'))
 				.map(item => {
@@ -25,8 +23,6 @@ export default createContentLoader(
 						// 若不含 title 属性，使用 filename 代替
 					}
 				})
-				// .filter(item => item.frontmatter.title)
-
 				.sort((a, b) => {
 					// @ts-ignore
 					return dayjs(b.frontmatter.date) - dayjs(a.frontmatter.date)

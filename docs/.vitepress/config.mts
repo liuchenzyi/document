@@ -22,10 +22,12 @@ const vitePressOptions = {
         sidebar: [],
 
         socialLinks: [
-            {icon: 'gitea', link: 'http://10.126.126.1/liuchen/document'}
+            // {icon: 'gitea', link: 'http://10.126.126.1/liuchen/document'},
+            {icon: 'github', link: 'https://github.com/liuchenzyi/document'}
         ],
         editLink: {
-            pattern: 'http://10.126.126.1/liuchen/document/_edit/main/docs/:path',
+            // pattern: 'http://10.126.126.1/liuchen/document/_edit/main/docs/:path',
+            pattern: 'https://github.com/liuchenzyi/document/blob/main/docs/:path',
             text: '编辑此页面'
         },
         lastUpdated: {
