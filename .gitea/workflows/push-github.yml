@@ -31,7 +31,7 @@ jobs:
         with:
           version: 9 # 指定 pnpm 版本，可以根据需要调整
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: https://gitee.com/mirror-actions/checkout@v4
         with:
           node-version: 22
           cache: pnpm
