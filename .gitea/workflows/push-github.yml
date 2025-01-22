@@ -27,14 +27,6 @@ jobs:
         with:
           fetch-depth: 0 # 是否获取所有提交
       - run: echo "${{ gitea.repository }} had clone to runner "
-
-
-  # 部署工作
-  push:
-    needs: clone
-    runs-on: windows-server
-    name: push commit to github
-    steps:
       - name: reset remote
         run: |
           git remote set-url origin git@github.com:liuchenzyi/document.git
