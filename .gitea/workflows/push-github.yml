@@ -31,7 +31,11 @@ jobs:
         run: |
           git remote set-url origin git@github.com:liuchenzyi/document.git
         shell: powershell
-      - name: reset remote
+      - name: pull from github
         run: |
-          git push  origin main
+          git pull
+        shell: powershell
+      - name: push to github
+        run: |
+          git push origin main
         shell: powershell
