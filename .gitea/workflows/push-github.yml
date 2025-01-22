@@ -23,18 +23,10 @@ jobs:
     runs-on: windows-server
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9 # 指定 pnpm 版本，可以根据需要调整
-      - name: Setup Node
         uses: https://gitee.com/mirror-actions/checkout@v4
         with:
-          node-version: 22
-          cache: pnpm
+          fetch-depth: 0 # 是否获取所有提交
+      - run: echo "${{ gitea.repository }} had clone to runner "
 
 
   # 部署工作
