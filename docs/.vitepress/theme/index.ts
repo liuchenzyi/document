@@ -24,6 +24,9 @@ import { NProgress } from 'nprogress-v2/dist/index.js'
 // 样式
 import 'nprogress-v2/dist/index.css'
 
+import 'virtual:group-icons.css' //代码组图标样式 //
+
+
 
 const NaiveUIProvider = defineComponent({
 	setup(props, { slots }) {
