@@ -1,0 +1,21 @@
+@use "./var.scss";
+@use "./custom-block.scss";
+@use "./blur.scss";
+@use "./code.scss";
+
+
+//引用样式修改
+.vp-doc blockquote {
+	border-radius: 10px;
+	padding: 18px 20px 20px 15px;
+	position: relative;
+	background-color: var(--vp-c-gray-soft);
+	border-left: 6px solid var(--vp-c-green-2);
+}
+// h1 样式修改
+.VPDoc h1 {
+	background: -webkit-linear-gradient(10deg, #bd34fe 5%, #e43498 15%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

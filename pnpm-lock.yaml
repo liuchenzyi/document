@@ -51,6 +51,9 @@ importers:
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
+      nprogress-v2:
+        specifier: ^1.1.10
+        version: 1.1.10
       sass-embedded:
         specifier: ^1.85.1
         version: 1.85.1
@@ -1108,6 +1111,9 @@ packages:
     resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
+
+  nprogress-v2@1.1.10:
+    resolution: {integrity: sha512-MypWLNIPIM07SS0bAc/oac0vhVFz9vAHm7d1sj//Pnf3J03LQ3CuWrlDteIu6exq0fIvkDJ6tUDRWLaifsIt5w==}
 
   oniguruma-to-es@3.1.1:
     resolution: {integrity: sha512-bUH8SDvPkH3ho3dvwJwfonjlQ4R80vjyvrU8YpxuROddv55vAEJrTuCuCVUhhsHbtlD9tGGbaNApGQckXhS8iQ==}
@@ -2517,6 +2523,8 @@ snapshots:
   nanoid@3.3.8: {}
 
   nanoid@4.0.2: {}
+
+  nprogress-v2@1.1.10: {}
 
   oniguruma-to-es@3.1.1:
     dependencies:

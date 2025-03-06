@@ -78,7 +78,7 @@ const vitePressOptions = {
                 },
             }),
             HeaderPlugin(),
-			TrafficStatisticsPlugin()
+			// TrafficStatisticsPlugin()
         ],
 
         // 设置scss的api类型为modern-compiler

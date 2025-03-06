@@ -20,6 +20,7 @@
     "child_process": "^1.0.2",
     "glob": "^11.0.1",
     "gray-matter": "^4.0.3",
+    "nprogress-v2": "^1.1.10",
     "sass-embedded": "^1.85.1",
     "vite": "^6.2.0",
     "vitepress": "^1.6.3",

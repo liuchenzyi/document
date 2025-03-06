@@ -13,10 +13,16 @@ import { defineComponent, h, onMounted } from 'vue'
 const { Layout } = DefaultTheme
 // @ts-ignore
 import ArticleHeader from '../components/ArticleHeader.vue'
-import TrafficStatistics from '../components/TrafficStatistics.vue'
+// import TrafficStatistics from '../components/TrafficStatistics.vue'
 
 import { darkTheme } from 'naive-ui'
-import './style.scss'
+import './style/index.scss'
+import { inBrowser } from 'vitepress'
+
+// 进度条
+import { NProgress } from 'nprogress-v2/dist/index.js'
+// 样式
+import 'nprogress-v2/dist/index.css'
 
 
 const NaiveUIProvider = defineComponent({
@@ -40,15 +46,30 @@ export default {
 	Layout: NaiveUIProvider,
     enhanceApp(ctx:EnhanceAppContext) {
         DefaultTheme.enhanceApp(ctx);
-		ctx.app.component('ArticleHeader', ArticleHeader);
-		ctx.app.component('TrafficStatistics', TrafficStatistics);
+		const { router,app} = ctx
+		app.component('ArticleHeader', ArticleHeader);
+		// app.component('TrafficStatistics', TrafficStatistics);
 
 		if (import.meta.env.SSR) {
-			const { collect } = setup(ctx.app)
-			ctx.app.provide('css-render-collect', collect)
+			const { collect } = setup(app)
+			app.provide('css-render-collect', collect)
 		}
 
-		ctx.app.provide('ver-count-url', import.meta.env.SSR? 'https://liuchennan.github.ssr' : 'https://liuchennan.github.dev')
+		app.provide('ver-count-url', import.meta.env.SSR? 'https://liuchennan.github.ssr' : 'https://liuchennan.github.dev')
+		
+		
+
+
+		// 导航切换 进度条
+		if (inBrowser) {
+			NProgress.configure({ showSpinner: false })
+			router.onBeforeRouteChange = () => {
+				NProgress.start() // 开始进度条
+			}
+			router.onAfterRouteChange = () => {
+				NProgress.done() // 停止进度条
+			}
+		}
 	},
 	setup() {
 		// 获取路由
