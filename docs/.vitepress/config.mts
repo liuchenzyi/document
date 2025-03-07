@@ -1,12 +1,11 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, UserConfig } from 'vitepress'
 import { withSidebar } from 'vitepress-sidebar';
 import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 import { HeaderPlugin } from "./plugins/headerPlugin";
-import { TrafficStatisticsPlugin } from "./plugins/TrafficStatisticsPlugin";
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 
 // https://vitepress.dev/reference/site-config
-const vitePressOptions = {
+const vitePressOptions: UserConfig = {
 	title: "个人知识库",
 	description: "A VitePress Site",
 	// lang: 'zh_CN',
@@ -18,6 +17,7 @@ const vitePressOptions = {
 			md.use(groupIconMdPlugin) //代码组图标
 		},
 	},
+
 
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
@@ -36,16 +36,16 @@ const vitePressOptions = {
 			text: '编辑此页面'
 		},
 		lastUpdated: {
-			text: '最后更新时间',
+			text: '更新时间',
 			formatOptions: {
-				dateStyle: 'full',
-				timeStyle: 'medium'
+				dateStyle: 'short',
+				// timeStyle: 'medium'
 			}
 		},
 		lightModeSwitchTitle: "切换到浅色模式",
 		darkModeSwitchTitle: "切换到深色模式",
 		outline: {
-			label: '页面导航',
+			label: '目录',
 			level: [2, 3],
 		},
 		// 文章翻页
@@ -84,7 +84,6 @@ const vitePressOptions = {
 			}),
 			HeaderPlugin(),
 			groupIconVitePlugin() //代码组图标
-			// TrafficStatisticsPlugin()
 		],
 
 		// 设置scss的api类型为modern-compiler
@@ -117,6 +116,7 @@ const vitePressSidebarOptions = [
 		scanStartPath: "front",
 		resolvePath: "/front/",
 		collapsed: true,
+		rootGroupText: "相关内容",
 		debugPrint: false,
 		useTitleFromFrontmatter: true,  //
 		excludeFilesByFrontmatterFieldName: "exclude",
@@ -129,6 +129,7 @@ const vitePressSidebarOptions = [
 		scanStartPath: "vite-press",
 		resolvePath: "/vite-press/",
 		collapsed: true,
+		rootGroupText: "相关内容",
 		debugPrint: false,
 		useTitleFromFrontmatter: true,  //
 		excludeFilesByFrontmatterFieldName: "exclude",
