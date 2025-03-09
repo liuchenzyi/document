@@ -263,3 +263,21 @@ pnpm info <package-name> dependencies
 pnpm info <package-name> allDependencies
 ```
 :::
+
+
+## 版本发布脚本
+
+### 最小版本号 + 1
+```bash
+npm version patch
+```
+
+### 主版本号 + 1
+```bash
+npm version major
+```
+
+### 次版本号 + 1
+```bash
+npm version minor
+```
