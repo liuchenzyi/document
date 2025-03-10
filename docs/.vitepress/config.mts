@@ -3,6 +3,9 @@ import { withSidebar } from 'vitepress-sidebar';
 import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 import { HeaderPlugin } from "./plugins/headerPlugin";
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import { MermaidMarkdown, MermaidPlugin } from 'vitepress-plugin-mermaid';
+
+
 
 // https://vitepress.dev/reference/site-config
 const vitePressOptions: UserConfig = {
@@ -15,6 +18,7 @@ const vitePressOptions: UserConfig = {
 	markdown: {
 		config(md) {
 			md.use(groupIconMdPlugin) //代码组图标
+			md.use(MermaidMarkdown);
 		},
 	},
 
@@ -62,7 +66,10 @@ const vitePressOptions: UserConfig = {
 	},
 	vite: {
 		ssr: {
-			noExternal: ['naive-ui', 'date-fns', 'vueuc'],
+			noExternal: ['naive-ui', 'date-fns', 'vueuc','mermaid'],
+		},
+		optimizeDeps: {
+			include: ['mermaid'],
 		},
 		plugins: [
 			pagefindPlugin({
@@ -83,7 +90,8 @@ const vitePressOptions: UserConfig = {
 				},
 			}),
 			HeaderPlugin(),
-			groupIconVitePlugin() //代码组图标
+			groupIconVitePlugin(), //代码组图标
+			MermaidPlugin(),	// mermaid
 		],
 
 		// 设置scss的api类型为modern-compiler
