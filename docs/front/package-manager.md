@@ -12,7 +12,7 @@ category: "front"
 
 # npm、yarn、pnpm 常用操作
 
-## 安装 yarn、pnpm
+## yarn、pnpm 安装
 
 ::: code-group
 
@@ -30,9 +30,22 @@ npm i -g pnpm
 
 :::
 
+## 查看版本号
+::: code-group
+```shell [npm]
+npm -v
+```
+```shell  [pnpm]
+yarn -v
+```
+```shell [pnpm]
+pnpm -v
+```
+:::
+
 ## 镜像源
 
-### 镜像源选择
+### 国内常用镜像源
 
 - 官方 `https://registry.npmjs.org/`
 - 淘宝 `https://registry.npmmirror.com/`
@@ -93,6 +106,9 @@ npm install <包名>
 # 全局安装一个包
 npm install -g <包名>
 
+# 安装指定名称的包并作为开发依赖
+npm install vue -D
+
 ```
 
 ```sh [yarn]
@@ -104,6 +120,9 @@ yarn add <包名>
 
 # 全局安装一个包
 yarn global add <包名>
+
+# 安装指定名称的包并作为开发依赖
+yarn add vue -D
 ```
 
 ```sh [pnpm]
@@ -115,6 +134,9 @@ pnpm add <包名>
 
 # 全局安装一个包
 pnpm add -g <包名>
+
+# 安装指定名称的包并作为开发依赖
+pnpm add vue -D
 ```
 
 :::
@@ -163,8 +185,10 @@ yarn cache clean
 ```sh [pnpm]
 # 查询缓存目录
 pnpm store path
+
 # 设置缓存目录
 pnpm config set cache-dir D:\node\pnpm\cache
+
 # 清除缓存
 pnpm store prune
 ```
@@ -202,15 +226,17 @@ yarn outdated
 ```
 
 ```sh [pnpm]
- #查看本地安装的依赖：
+# 查看本地安装的依赖：
 pnpm list
 pnpm ls
 
-#查看全局安装的依赖：
+# 查看全局安装的依赖：
 pnpm list --global
 pnpm ls --g
+
 # 查看全局安装的包及其路径：
 pnpm list --global --long
+
 #检查过期的依赖：
 pnpm outdated
 ```
@@ -221,15 +247,24 @@ pnpm outdated
 
 ::: code-group
 
-```sh [npm]
+```shell [npm]
+# 查看所有配置设置
 npm config list
+
+# 查看所有配置设置（包含默认设置）
+npm config list -l
 ```
 
-```sh [yarn]
+```shell [yarn]
+# 查看所有配置设置
 yarn config list
 ```
 
-```sh [pnpm]
+```shell [pnpm]
+# 查看所有配置设置
+pnpm config list
+
+# 查看所有配置设置（包含默认设置）
 pnpm config list
 ```
 
@@ -265,19 +300,15 @@ pnpm info <package-name> allDependencies
 :::
 
 
-## 版本发布脚本
+##  变更版本号
 
-### 最小版本号 + 1
-```bash
+::: code-group
+```shell [npm]
+# 修改主版本号 + 1
+npm version major
+# 修改次版本号 + 1
+npm version minor
+# 修改补丁版本号 + 1
 npm version patch
 ```
-
-### 主版本号 + 1
-```bash
-npm version major
-```
-
-### 次版本号 + 1
-```bash
-npm version minor
-```
+:::
