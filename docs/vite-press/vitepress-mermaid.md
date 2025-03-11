@@ -48,7 +48,7 @@ export default defineConfig({
         
 		plugins: [
 			// ...
-			[MermaidPlugin()],	// [!code ++]
+			MermaidPlugin(),	// [!code ++]
 		],
 	},
 })
