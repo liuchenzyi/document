@@ -28,6 +28,7 @@ const vitePressOptions: UserConfig = {
 		nav: [
 			{text: '首页', link: '/'},
 			{text: '前端', link: '/front/'},
+			{text: 'GIS开发', link: '/gis/'},
 			{text: '博客搭建', link: '/vite-press/'}
 		],
 		sidebar: [],
@@ -144,7 +145,20 @@ const vitePressSidebarOptions = [
 		useFolderLinkFromIndexFile: true,
 		collapseDepth: 1,
 		useFolderTitleFromIndexFile: true
-	}
+	},
+    {
+        documentRootPath: '/docs',
+        scanStartPath: "gis",
+        resolvePath: "/gis/",
+        collapsed: true,
+        rootGroupText: "目录",
+        debugPrint: false,
+        useTitleFromFrontmatter: true,  //
+        excludeFilesByFrontmatterFieldName: "exclude",
+        useFolderLinkFromIndexFile: true,
+        collapseDepth: 1,
+        useFolderTitleFromIndexFile: true
+    }
 ];
 
 export default defineConfig(withSidebar(vitePressOptions, vitePressSidebarOptions));
