@@ -25,13 +25,13 @@ jobs:
           pnpm docs:build
       - name: 清理输出目录
         run: |
-          if (Test-Path -Path "C:\output\dist") {
-            Remove-Item -Path "C:\output\dist\*" -Recurse -Force
+          if (Test-Path -Path "C:\output\document") {
+            Remove-Item -Path "C:\output\document\*" -Recurse -Force
           }else{
-            New-Item -Path "C:\output\dist" -ItemType Directory
+            New-Item -Path "C:\output\document" -ItemType Directory
           }
         shell: powershell
       - name: 将打包结果拷贝到指定目录
         run: |
-          Copy-Item -Path "${{ gitea.workspace }}\dist\*" -Destination "C:\output\dist" -Recurse -Force
+          Copy-Item -Path "${{ gitea.workspace }}\dist\*" -Destination "C:\output\document" -Recurse -Force
         shell: powershell
