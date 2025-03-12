@@ -11,7 +11,7 @@ import { MermaidMarkdown, MermaidPlugin } from 'vitepress-plugin-mermaid';
 const vitePressOptions: UserConfig = {
 	title: "个人知识库",
 	description: "A VitePress Site",
-	// lang: 'zh_CN',
+    lang: 'zh-Hans',
 	lastUpdated: true, // 是否显示最后更新时间
 	base: '/document/',
 

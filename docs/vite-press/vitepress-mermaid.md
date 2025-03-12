@@ -91,6 +91,28 @@ pie title Pets adopted by volunteers
 ```
 ````
 
+## XY 图
+
+**输入**
+````
+```mermaid
+xychart-beta
+title "Sales Revenue"
+x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+y-axis "Revenue (in $)" 4000 --> 11000
+bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500]
+line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500]
+```
+````
+**输出**
+```mermaid
+xychart-beta
+title "Sales Revenue"
+x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+y-axis "Revenue (in $)" 4000 --> 11000
+bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500]
+line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500]
+```
 **输出**
 
 ```mermaid
@@ -99,6 +121,56 @@ pie title Pets adopted by volunteers
 "Cats" : 85
 "Rats" : 15
 ```
+
+### 思维导图
+
+````markdown
+
+**输入**
+
+```mermaid
+mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectiveness<br/>and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+```
+````
+
+**输出**
+
+```mermaid
+mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectiveness<br/>and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+```
+
 ## 更多 图表类型 参考
 > [mermaid 中文文档](https://mermaid.nodejs.cn/)
 
