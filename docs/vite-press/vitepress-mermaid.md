@@ -25,7 +25,7 @@ pnpm add vitepress-plugin-mermaid -d
 
 ::: code-group
 
-```ts
+```ts [TS]
 import { MermaidMarkdown, MermaidPlugin } from 'vitepress-plugin-mermaid'; // [!code ++]
 
 export default defineConfig({

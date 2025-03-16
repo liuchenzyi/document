@@ -3,19 +3,103 @@
 @use "./blur.scss";
 @use "./code.scss";
 
+// 侧边栏
+.VPSidebar {
+
+
+
+
+    nav {
+        background: var(--main-bg-color);
+
+        padding: 6px 12px;
+
+        border: 1px solid var(--main-border-color);
+        border-radius: 16px;
+        box-shadow: 0 8px 16px -4px #2c2d300c;
+
+        margin-top: calc( var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 48px);
+        
+    }
+
+    .curtain{
+        background: transparent;
+        backdrop-filter: none;
+    }
+}
+header{
+    .has-sidebar .title{
+        border-bottom: none;
+        
+    }
+    
+    .divider{
+        display: none;
+    }
+}
 
 //引用样式修改
 .vp-doc blockquote {
-	border-radius: 10px;
-	padding: 18px 20px 20px 15px;
-	position: relative;
-	background-color: var(--vp-c-gray-soft);
-	border-left: 6px solid var(--vp-c-green-2);
+    border-radius: 10px;
+    padding: 18px 20px 20px 15px;
+    position: relative;
+    background-color: var(--vp-c-gray-soft);
+    border-left: 6px solid var(--vp-c-green-2);
 }
+
 // h1 样式修改
 .VPDoc h1 {
-	background: -webkit-linear-gradient(10deg, #bd34fe 5%, #e43498 15%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(10deg, #bd34fe 5%, #e43498 15%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: revert;
 }
+
+.outline-title {
+    .active {
+        color: #425aef;
+    }
+}
+
+
+
+
+.aside-content {
+    .content {
+        background: var(--main-bg-color);
+        border: 1px solid var(--main-border-color);
+        border-radius: 16px;
+        box-shadow: 0 8px 16px -4px #2c2d300c;
+        padding: 6px 12px;
+
+        .outline-marker {
+            background: #425aef;
+        }
+
+        .outline-link {
+            padding: 6px 12px;
+            line-height: 1.5;
+
+            &.active {
+                color: #425aef;
+                background: #4259ef0d;
+                border-radius: 8px;
+            }
+        }
+    }
+
+}
+
+.VPDoc {
+
+    .container {
+        .content {
+            background: var(--main-bg-color);
+            border: 1px solid var(--main-border-color);
+            border-radius: 16px;
+            box-shadow: 0 8px 16px -4px #2c2d300c;
+        }
+    }
+}
+

@@ -24,23 +24,24 @@ import { NProgress } from 'nprogress-v2/dist/index.js'
 // 样式
 import 'nprogress-v2/dist/index.css'
 
-import 'virtual:group-icons.css' //代码组图标样式 //
-
+import 'virtual:group-icons.css'
+import Background from '../components/Background.vue' //代码组图标样式 //
 
 
 const NaiveUIProvider = defineComponent({
-	setup(props, { slots }) {
-		const { isDark } = useData();
-		return () => h(
-			NConfigProvider,
-			{ abstract: true, inlineThemeDisabled: true, theme: isDark.value ? darkTheme : undefined },
-			{
-				default: () => [
-					h(Layout, null, { default: slots.default?.() }),
-				]
-			}
-		);
-	}
+    setup(props, {slots}) {
+        const {isDark} = useData();
+        return () => h(
+            NConfigProvider,
+            {abstract: true, inlineThemeDisabled: true, theme: isDark.value ? darkTheme : undefined},
+            {
+                default: () => [
+                    h(Layout, null, {default: slots.default?.()}),
+                    h(Background, null)
+                ]
+            }
+        );
+    }
 });
 
 
@@ -49,42 +50,40 @@ export default {
 	Layout: NaiveUIProvider,
     enhanceApp(ctx:EnhanceAppContext) {
         DefaultTheme.enhanceApp(ctx);
-		const { router,app} = ctx
-		app.component('ArticleHeader', ArticleHeader);
-		// app.component('TrafficStatistics', TrafficStatistics);
+        const {router, app} = ctx
+        app.component('ArticleHeader', ArticleHeader);
+        // app.component('TrafficStatistics', TrafficStatistics);
 
-		if (import.meta.env.SSR) {
-			const { collect } = setup(app)
-			app.provide('css-render-collect', collect)
-		}
+        if(import.meta.env.SSR) {
+            const {collect} = setup(app)
+            app.provide('css-render-collect', collect)
+        }
 
-		app.provide('ver-count-url', import.meta.env.SSR? 'https://liuchennan.github.ssr' : 'https://liuchennan.github.dev')
-		
-		
+        app.provide('ver-count-url', import.meta.env.SSR ? 'https://liuchennan.github.ssr' : 'https://liuchennan.github.dev')
 
 
-		// 导航切换 进度条
-		if (inBrowser) {
-			NProgress.configure({ showSpinner: false })
-			router.onBeforeRouteChange = () => {
-				NProgress.start() // 开始进度条
-			}
-			router.onAfterRouteChange = () => {
-				NProgress.done() // 停止进度条
-			}
-		}
-	},
-	setup() {
-		// 获取路由
-		const route = useRoute();
-		// 使用 imageViewer 插件
-		imageViewer(route);
+        // 导航切换 进度条
+        if(inBrowser) {
+            NProgress.configure({showSpinner: false})
+            router.onBeforeRouteChange = () => {
+                NProgress.start() // 开始进度条
+            }
+            router.onAfterRouteChange = () => {
+                NProgress.done() // 停止进度条
+            }
+        }
+    },
+    setup() {
+        // 获取路由
+        const route = useRoute();
+        // 使用 imageViewer 插件
+        imageViewer(route);
 
-		// const { isDark } = useData()
+        // const { isDark } = useData()
 
-		onMounted(() => {
-			// 获取当前页面的标题
-			// console.log(route.data.title);
-		});
+        onMounted(() => {
+            // 获取当前页面的标题
+            // console.log(route.data.title);
+        });
     }
 };
