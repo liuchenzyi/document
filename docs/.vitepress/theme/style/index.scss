@@ -3,30 +3,50 @@
 @use "./blur.scss";
 @use "./code.scss";
 
-// 侧边栏
-.VPSidebar {
+
+.Layout{
+    // 侧边栏
+    .VPSidebar {
 
 
-
-
-    nav {
-        background: var(--main-bg-color);
-
-        padding: 6px 12px;
-
-        border: 1px solid var(--main-border-color);
-        border-radius: 16px;
-        box-shadow: 0 8px 16px -4px #2c2d300c;
-
-        margin-top: calc( var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 48px);
+        //padding-left: 0;
         
-    }
+        .group{
+            background: var(--main-bg-color);
 
-    .curtain{
-        background: transparent;
-        backdrop-filter: none;
+            padding: 12px 24px;
+
+            border: 1px solid var(--main-border-color);
+            border-radius: 16px;
+            box-shadow: 0 8px 16px -4px #2c2d300c;
+
+            margin-top: calc( var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 48px);
+        }
+
+
+
+
+
+        //nav {
+        //    background: var(--main-bg-color);
+        //
+        //    padding: 6px 12px;
+        //
+        //    border: 1px solid var(--main-border-color);
+        //    border-radius: 16px;
+        //    box-shadow: 0 8px 16px -4px #2c2d300c;
+        //
+        //    margin-top: calc( var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 48px);
+        //
+        //}
+
+        .curtain{
+            background: transparent;
+            backdrop-filter: none;
+        }
     }
 }
+
 header{
     .has-sidebar .title{
         border-bottom: none;
