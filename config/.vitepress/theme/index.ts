@@ -13,7 +13,6 @@ import { defineComponent, h, onMounted } from 'vue'
 const { Layout } = DefaultTheme
 // @ts-ignore
 import ArticleHeader from '../components/ArticleHeader.vue'
-// import TrafficStatistics from '../components/TrafficStatistics.vue'
 
 import { darkTheme } from 'naive-ui'
 import './style/index.scss'
