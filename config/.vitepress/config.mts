@@ -1,10 +1,8 @@
 import { defineConfig, UserConfig } from 'vitepress'
 import { withSidebar } from 'vitepress-sidebar';
-import { pagefindPlugin } from 'vitepress-plugin-pagefind'
-import { HeaderPlugin } from "./plugins/headerPlugin";
-import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
-import { MermaidMarkdown, MermaidPlugin } from 'vitepress-plugin-mermaid';
-
+import { groupIconMdPlugin } from 'vitepress-plugin-group-icons'
+import { MermaidMarkdown } from 'vitepress-plugin-mermaid';
+import viteConfig from './vite.config.mts'
 
 
 // https://vitepress.dev/reference/site-config
@@ -14,6 +12,7 @@ const vitePressOptions: UserConfig = {
     lang: 'zh-Hans',
 	lastUpdated: true, // 是否显示最后更新时间
 	base: '/document/',
+    srcDir: '../docs',
 
 	markdown: {
 		config(md) {
@@ -65,55 +64,7 @@ const vitePressOptions: UserConfig = {
 			label: '简体中文',
 		},
 	},
-	vite: {
-		ssr: {
-			noExternal: ['naive-ui', 'date-fns', 'vueuc','mermaid'],
-		},
-		optimizeDeps: {
-			include: ['mermaid'],
-		},
-		plugins: [
-			pagefindPlugin({
-				forceLanguage: 'zh-cn',
-				btnPlaceholder: '搜索',
-				placeholder: '搜索文档',
-				emptyText: '空空如也',
-				heading: '共: {{searchResult}} 条结果',
-				toSelect: '选择',
-				toNavigate: '切换',
-				toClose: '关闭',
-				searchBy: '搜索',
-				customSearchQuery(input: string) {
-					return input
-						// .replace(/[\u4E00-\u9FA5]/g, ' $& ')
-						.replace(/\s+/g, ' ')  // 将 多个 空白字符串替换为单个空格
-						.trim()
-				},
-			}),
-			HeaderPlugin(),
-			groupIconVitePlugin(), //代码组图标
-			MermaidPlugin(),	// mermaid
-		],
-
-		// 设置scss的api类型为modern-compiler
-		css: {
-			preprocessorOptions: {
-				scss: {
-					api: 'modern-compiler'
-				}
-			}
-		},
-
-		build: {
-			target: 'esnext'
-		},
-		server: {
-			host: '0.0.0.0',
-			port: 5000,
-			// 是否开启 https
-			https: false,
-		},
-	},
+	vite: viteConfig,
 	outDir: "../dist",
 }
 
@@ -126,7 +77,7 @@ const vitePressSidebarOptions = [
 		resolvePath: "/front/",
 		collapsed: true,
 		rootGroupText: "相关内容",
-		debugPrint: false,
+		debugPrint: true,
 		useTitleFromFrontmatter: true,  //
 		excludeFilesByFrontmatterFieldName: "exclude",
 		useFolderLinkFromIndexFile: true,

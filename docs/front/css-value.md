@@ -7,7 +7,7 @@ description: 记录一些 css 属性关键字
 ---
 
 <script setup>
-import CurrentColor from '../../demo/CurrentColor.vue';
+import CurrentColor from '../../components/CurrentColor.vue';
 </script>
 
 # CSS 全局关键字属性详解

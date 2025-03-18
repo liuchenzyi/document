@@ -4,7 +4,7 @@ date: '2024-11-26 23:00:16'
 ---
 
 <script setup>
-import HomeIndex from './.vitepress/components/HomeIndex.vue';
+import HomeIndex from '../components/HomeIndex.vue';
 </script>
 
 
