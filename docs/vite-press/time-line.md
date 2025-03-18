@@ -36,11 +36,11 @@ date: '2024-12-14 21:26:46'
 
 
 
-<<< @/.vitepress/components/posts.data.ts
+<<< ../../components/posts.data.ts
 
 ## 编写首页组件
 
-<<< @/.vitepress/components/HomeIndex.vue
+<<< ../../components/HomeIndex.vue
 
 
 

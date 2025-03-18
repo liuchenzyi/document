@@ -278,4 +278,4 @@ console.log('\x1B[33m \x1B[44m 背景蓝色文字黄色 \x1B[36m \x1B[41m 背景
 
 ## 完整代码
 
-<<< ../.vitepress/utils/FtpDeploy.ts
+<<< ../../config/.vitepress/utils/FtpDeploy.ts

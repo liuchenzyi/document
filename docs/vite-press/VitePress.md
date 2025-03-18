@@ -155,7 +155,7 @@ pnpm docs:dev
 
 官方文档：[vitepress站点标题和图标](https://vitepress.dev/zh/reference/default-theme-nav#site-title-and-logo)
 
-<<< ../.vitepress/config.mts{ts}
+<<< ../../config/.vitepress/config.mts{ts}
 
 ### 4.2 搜索
 
@@ -181,7 +181,7 @@ pnpm add vitepress-plugin-pagefind pagefind
 
 :::
 
-<<< ../.vitepress/config.mts{9 ts:line-numbers}
+<<< ../../config/.vitepress/config.mts{9 ts:line-numbers}
 
 ### 4.3 导航链接
 

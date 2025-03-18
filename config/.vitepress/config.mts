@@ -77,7 +77,7 @@ const vitePressSidebarOptions = [
 		resolvePath: "/front/",
 		collapsed: true,
 		rootGroupText: "相关内容",
-		debugPrint: true,
+		debugPrint: false,
 		useTitleFromFrontmatter: true,  //
 		excludeFilesByFrontmatterFieldName: "exclude",
 		useFolderLinkFromIndexFile: true,

@@ -52,14 +52,14 @@ tags:
 ## 编写组件
 编写一个组件用于展示访问量数据
 
-<<< @/.vitepress/components/TrafficStatistics.vue
+<<< ../../config/.vitepress/components/TrafficStatistics.vue
 
 
 ## 编写插件
 
 编写一个 `vite` 插件，用于在文档中插入组件
 
-<<< @/.vitepress/plugins/TrafficStatisticsPlugin.ts
+<<< ../../config/.vitepress/plugins/TrafficStatisticsPlugin.ts
 
 **注册全局组件**
 

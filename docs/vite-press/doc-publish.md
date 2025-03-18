@@ -219,7 +219,7 @@ fs.writeFile(filePath, newContent, 'utf8', err => {
 
 ## 完整代码
 
-<<< ../.vitepress/utils/getPublishTime.ts
+<<< ../../config/.vitepress/utils/getPublishTime.ts
 
 
 
