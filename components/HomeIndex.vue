@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NTimeline, NTimelineItem, NIcon, NBackTop, NTag, NCard, NEllipsis, NTabs, NTab, NEmpty } from 'naive-ui'
+import { NIcon, NBackTop, NTag, NCard, NEllipsis, NTabs, NTab, NEmpty } from 'naive-ui'
 import { useRouter } from 'vitepress'
 import dayjs from 'dayjs'
 import { DiscountOutlined } from '@vicons/material'
@@ -29,33 +29,39 @@ const posts = computed(() => {
 
 <template>
 	<section class="article-list">
-		<n-tabs v-model:value="tab" size="large" style="margin-bottom: 20px" type="bar">
+		<n-tabs v-model:value="tab" size="large" style="margin-bottom: 20px" type="segment">
 			<n-tab name="all" tab="所有"></n-tab>
 			<n-tab name="front" tab="前端"></n-tab>
 			<n-tab name="backend" tab="后端"></n-tab>
 			<n-tab name="vite-press" tab="vite-press"></n-tab>
 			<n-tab name="other" tab="其他"></n-tab>
 		</n-tabs>
-		<n-timeline v-if="posts.length >0" size="large">
-			<n-timeline-item v-for="item in posts" :time="dayjs(item.frontmatter.date).format('YYYY-MM-DD')"
-							 line-type="dashed">
-				<template #default>
-					<n-card :title="item.frontmatter.title" hoverable @click="jump(item.url)">
-						<div class="tags">
-							<n-tag v-for="tagItem in item.frontmatter.tags" type="info">
-								{{ tagItem }}
-								<template #icon>
-									<n-icon :component="DiscountOutlined" :size="16"/>
-								</template>
-							</n-tag>
-						</div>
-						<n-ellipsis :line-clamp="1">
-							{{ item.frontmatter.description ?? '无简介' }}
-						</n-ellipsis>
-					</n-card>
-				</template>
-			</n-timeline-item>
-		</n-timeline>
+        
+        <div v-if="posts.length>0" class="article-list-box">
+            <n-card :title="item.frontmatter.title" hoverable @click="jump(item.url)" v-for="item in posts" size="small">
+
+                <n-ellipsis :line-clamp="1">
+                    {{ item.frontmatter.description ?? '无简介' }}
+                </n-ellipsis>
+
+                <div class="tags">
+                    <n-tag v-for="tagItem in item.frontmatter.tags" type="info">
+                        {{ tagItem }}
+                        <template #icon>
+                            <n-icon :component="DiscountOutlined" :size="16"/>
+                        </template>
+                    </n-tag>
+                </div>
+                <div style="text-align: right">
+                    {{ dayjs(item.frontmatter.date).format('YYYY-MM-DD') }}
+                </div>
+
+               
+            </n-card>
+        </div>
+
+       
+
 
 		<n-empty v-else description="该分类暂无数据"></n-empty>
 	</section>
@@ -64,15 +70,19 @@ const posts = computed(() => {
 
 <style lang="scss" scoped>
 .article-list {
-	width: 60%;
+	width: 70%;
 	margin: 3vh auto;
 	height: 100%;
 
 	min-width: 300px;
 
-	:deep(.n-timeline-item-content__content) {
-		cursor: pointer;
-	}
+
+    .article-list-box{
+        & > div{
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+    }
 
 	.tags {
 		width: 100%;
@@ -81,6 +91,11 @@ const posts = computed(() => {
 		gap: 10px;
 
 		margin: 0 0 10px 0;
+	}
+}
+@media screen and (max-width: 640px) {
+	.article-list {
+		width: 100%;
 	}
 }
 </style>
