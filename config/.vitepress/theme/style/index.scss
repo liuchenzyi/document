@@ -123,3 +123,15 @@ header{
     }
 }
 
+// 当 宽度 小于 640px 时
+@media screen and (max-width: 640px) {
+    .VPDoc {
+        background: var(--main-bg-color);
+        .container {
+            .content {
+                border: none;
+                border-radius: 0;
+            }
+        }
+    }
+}
