@@ -57,10 +57,10 @@ pnpm -v
 国内用户建议使用镜像源提升下载速度，镜像源会定时与官方仓库同步：
 
 #### 常用镜像源列表
-- 官方源：`https://registry.npmjs.org/`（国际线路访问快）
-- 淘宝源：`https://registry.npmmirror.com/`（国内推荐）
+- 官方源：`https://registry.npmjs.org/`
+- 淘宝源：`https://registry.npmmirror.com/`
 - 腾讯源：`https://mirrors.cloud.tencent.com/npm/` 
-- cnpm源：`https://r.cnpmjs.org/`（阿里巴巴内部源）
+- cnpm源：`https://r.cnpmjs.org/`
 
 #### 镜像源设置
 配置镜像源后，所有包下载请求将指向指定服务器：
@@ -340,16 +340,29 @@ npm version 1.2.3
 ```
 ```shell [yarn]
 # 通过Yarn升级版本（需要安装version插件）
-yarn version --major
+# 升级主版本 (x.0.0)
+yarn version --maj
+or
+# 升级次版本 (0.x.0)
 yarn version --minor
+
+# 升级补丁版本 (0.0.x)
 yarn version --patch
+
+# 指定具体版本号
 yarn version 1.2.3
 ```
 ```shell [pnpm]
-# 使用pnpm变更版本
+# 升级主版本 (x.0.0)
 pnpm version major
+
+# 升级次版本 (0.x.0) 
 pnpm version minor
+
+# 升级补丁版本 (0.0.x)
 pnpm version patch
+
+# 指定具体版本号
 pnpm version 1.2.3
 ```
 :::
@@ -385,24 +398,6 @@ pnpm update --latest
 ```
 :::
 
-### 脚本执行
-package.json中的scripts字段可定义自动化任务：
-::: code-group
-```shell [npm]
-# 运行自定义脚本
-npm run <script-name>
-# 并行运行脚本
-npm run dev & npm run serve
-```
-```shell [yarn]
-# 运行脚本并传递参数
-yarn run <script-name> -- --port=3000
-```
-```shell [pnpm]
-# 过滤运行脚本
-pnpm --filter <project> run build
-```
-:::
 
 ### 锁定文件管理
 锁定文件（lockfile）确保跨环境安装一致性：
@@ -456,23 +451,6 @@ pnpm why vue  # 显示依赖关系链
 ```
 :::
 
-### 多项目管理（Monorepo）
-Monorepo适合管理：
-- 多个相关项目
-- 共享组件库
-- 微服务架构
-::: code-group
-```shell [npm]
-npm init -w packages/my-package
-```
-```shell [yarn]
-yarn workspace <workspace-name> add <package>
-```
-```shell [pnpm]
-pnpm add -w <package>  # 全局安装
-pnpm --filter <package> add <dependency>  # 指定项目安装
-```
-:::
 
 ### 安全审计
 定期审计可及时发现漏洞：
