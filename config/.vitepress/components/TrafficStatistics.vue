@@ -3,7 +3,6 @@ import {  ref,onMounted,inject } from 'vue'
 import { NStatistic } from 'naive-ui'
 const url = inject('ver-count-url')
 onMounted(async ()=>{
-	console.log(url,import.meta)
 	const baseUrl = 'https://events.vercount.one';
 	const apiUrl = `${baseUrl}/log?jsonpCallback=VisitorCountCallback`;
 	try {

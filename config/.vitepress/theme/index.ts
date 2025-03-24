@@ -2,15 +2,15 @@ import DefaultTheme from 'vitepress/theme';
 import 'viewerjs/dist/viewer.min.css';
 import imageViewer from 'vitepress-plugin-image-viewer';
 
-import { useRoute } from 'vitepress';
-import { useData } from 'vitepress'
+import { useRoute ,useData} from 'vitepress';
 
-import type {EnhanceAppContext} from "vitepress/client";
+import type { EnhanceAppContext } from "vitepress/client";
 
 import { setup } from '@css-render/vue3-ssr'
 import { NConfigProvider } from 'naive-ui'
 import { defineComponent, h, onMounted } from 'vue'
-const { Layout } = DefaultTheme
+
+const {Layout} = DefaultTheme
 // @ts-ignore
 import ArticleHeader from '../components/ArticleHeader.vue'
 
@@ -46,19 +46,18 @@ const NaiveUIProvider = defineComponent({
 
 export default {
     ...DefaultTheme,
-	Layout: NaiveUIProvider,
-    enhanceApp(ctx:EnhanceAppContext) {
+    Layout: NaiveUIProvider,
+    enhanceApp(ctx: EnhanceAppContext) {
         DefaultTheme.enhanceApp(ctx);
         const {router, app} = ctx
         app.component('ArticleHeader', ArticleHeader);
         // app.component('TrafficStatistics', TrafficStatistics);
 
         if(import.meta.env.SSR) {
-            const {collect} = setup(app)
-            app.provide('css-render-collect', collect)
+            setup(app)
         }
 
-        app.provide('ver-count-url', import.meta.env.SSR ? 'https://liuchennan.github.ssr' : 'https://liuchennan.github.dev')
+        // app.provide('ver-count-url', import.meta.env.SSR ? 'https://liuchennan.github.ssr' : 'https://liuchennan.github.dev')
 
 
         // 导航切换 进度条
